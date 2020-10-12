@@ -16,14 +16,14 @@ class SoundSchema(ma.Schema):
 
 class TemperatureSchema(ma.Schema):
     class Meta:
-        model = Temperature
+        fields = ('id', 'temperature', 'date')
 
 
 class HumiditySchema(ma.Schema):
     class Meta:
-        model = Humidity
+        fields = ('id', 'humidity', 'date')
 
 
 class LightSchema(ma.Schema):
     class Meta:
-        model = Light
+        fields = ('id', 'light', 'date')

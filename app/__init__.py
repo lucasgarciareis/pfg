@@ -18,4 +18,7 @@ def create_app():
     from .sound import bp_sound
     app.register_blueprint(bp_sound)
 
+    from .xdk import bp_xdk
+    app.register_blueprint(bp_xdk)
+
     return app
