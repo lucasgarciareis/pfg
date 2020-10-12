@@ -1,0 +1,8 @@
+/venv
+/.vscode
+/migrations
+/app/__pycache__
+cmds.txt
+teste.py
+LICENSE
+README.md
