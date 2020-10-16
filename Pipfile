@@ -4,15 +4,13 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-requests = "*"
-ipdb = "*"
 
 [packages]
-flask = "*"
-flask-sqlalchemy = "*"
-flask-migrate = "*"
 flask-marshmallow = "*"
+flask-migrate = "*"
+flask = "*"
 marshmallow-sqlalchemy = "*"
+flask-sqlalchemy = "*"
 
 [requires]
-python_version = "3.6"
+python_version = "3.8"
