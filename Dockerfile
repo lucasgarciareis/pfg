@@ -1,6 +1,6 @@
-from alpine:latest
+from python:3.6.12-alpine3.11
 
-RUN apk add --no-cache python3.6-dev \
+RUN apk add --no-cache --update python3-dev  gcc build-base \
     && pip3 install --upgrade pip
 
 WORKDIR /app
@@ -13,4 +13,4 @@ EXPOSE 5000
 
 ENTRYPOINT  ["python3"]
 
-CMD ["-m", "flask run"]
+CMD ["-m", "flask", "run", "--host=0.0.0.0"]
