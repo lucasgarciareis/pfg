@@ -1,16 +1,16 @@
-from python:3.6.12-alpine3.11
+FROM python:3.8.6-buster
 
-RUN apk add --no-cache --update python3-dev  gcc build-base \
-    && pip3 install --upgrade pip
+RUN  pip3 install pip
 
-WORKDIR /app
+WORKDIR /pfg
 
-COPY . /app
+COPY . /pfg
 
-RUN pip3 --no-cache-dir install -r requirements.txt                                                                            
+RUN pip3 --no-cache-dir install -r requirements.txt      
+RUN flask db init 
+RUN flask db migrate 
+RUN flask db upgrade                                                                    
 
 EXPOSE 5000
 
-ENTRYPOINT  ["python3"]
-
-CMD ["-m", "flask", "run", "--host=0.0.0.0"]
+CMD ["flask", "run", "--host=0.0.0.0"]
