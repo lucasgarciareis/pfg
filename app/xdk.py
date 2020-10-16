@@ -1,8 +1,22 @@
 from flask import Blueprint, current_app, request, jsonify
 from .model import Temperature, Humidity, Light
-from .serializer import TemperatureSchema
+from .serializer import TemperatureSchema, LightSchema, HumiditySchema
 
 bp_xdk = Blueprint('xdk', __name__)
+
+
+@bp_xdk.route('/light', methods=['GET'])
+def getlight():
+    ss = LightSchema(many=True)
+    result = Light.query.all()
+    return ss.jsonify(result), 200
+
+
+@bp_xdk.route('/humidity', methods=['GET'])
+def gethumd():
+    ss = HumiditySchema(many=True)
+    result = Temperature.query.all()
+    return ss.jsonify(result), 200
 
 
 @bp_xdk.route('/temperature', methods=['GET'])

@@ -5,7 +5,7 @@ from .serializer import SoundSchema
 bp_sound = Blueprint('sound', __name__)
 
 
-@bp_sound.route('/get-sound', methods=['GET'])
+@bp_sound.route('/sound', methods=['GET'])
 def getsound():
     ss = SoundSchema(many=True)
     result = Sound.query.all()

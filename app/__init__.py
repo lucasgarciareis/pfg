@@ -21,4 +21,7 @@ def create_app():
     from .xdk import bp_xdk
     app.register_blueprint(bp_xdk)
 
+    from .vibration import bp_vibration
+    app.register_blueprint(bp_vibration)
+
     return app
