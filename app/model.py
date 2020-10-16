@@ -47,3 +47,13 @@ class Light(db.Model):
 
     def __init__(self, light):
         self.light = light
+
+
+# Class vibration
+class Vibration(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    vibration = db.Column(db.Boolean)
+    date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+
+    def __init__(self, vibration):
+        self.vibration = vibration

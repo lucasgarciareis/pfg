@@ -27,3 +27,8 @@ class HumiditySchema(ma.Schema):
 class LightSchema(ma.Schema):
     class Meta:
         fields = ('id', 'light', 'date')
+
+
+class VibrationSchema(ma.Schema):
+    class Meta:
+        fields = ('id', 'vibration', 'date')
