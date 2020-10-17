@@ -1,4 +1,4 @@
-from python:3.6.12-alpine3.11
+FROM python:3.6.12-alpine3.11
 
 RUN apk add --no-cache --update python3-dev  gcc build-base \
     && pip3 install --upgrade pip
