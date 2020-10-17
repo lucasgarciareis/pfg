@@ -1,8 +1,10 @@
 alembic==1.4.3
 backcall==0.2.0
 certifi==2020.6.20
+cffi==1.14.3
 chardet==3.0.4
 click==7.1.2
+cryptography==3.1.1
 decorator==4.4.2
 Flask==1.1.2
 flask-marshmallow==0.14.0
@@ -25,6 +27,7 @@ pickleshare==0.7.5
 prompt-toolkit==3.0.8
 psycopg2-binary==2.8.6
 ptyprocess==0.6.0
+pycparser==2.20
 Pygments==2.7.1
 PyMySQL==0.10.1
 python-dateutil==2.8.1

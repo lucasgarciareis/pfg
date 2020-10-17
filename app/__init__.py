@@ -9,13 +9,16 @@ def create_app():
     app = Flask(__name__)
     basedir = os.path.abspath(os.path.dirname(__file__))
 
-    #sqlite
+    #sqlite - local
     #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + \
     #    os.path.join(basedir, 'crud.db')
 
-    #MySQL
+    #MySQL - local
     #app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://<mysql_username>:<mysql_password>@<mysql_host>:<mysql_port>/<mysql_db>'
-    app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://projetofinal:password@localhost:3306/crud'
+    #app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://projetofinal:password@localhost:3306/crud'
+
+    #MySQL - Docker
+    app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://projetofinal:password@172.17.0.2:3306/crud'
 
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
