@@ -1,0 +1,38 @@
+version: '3.7'
+
+networks:
+  net1:
+    name: net1
+    external: true
+
+services:
+  mysql:
+    container_name: mysql
+    ports:
+        - 54321:3306
+    build:
+        context: ./db 
+    restart: always
+    networks:
+        - net1
+    volumes:
+        - ./dbdata:/var/lib/mysql
+
+  app:
+    container_name: app
+    ports:
+        - 54322:5000
+    build:
+        context: ./app 
+    restart: always
+    networks:
+        - net1
+    links:
+        - mysql
+    volumes:
+        - ./app:/pfg
+    depends_on: 
+        - mysql
+    
+volumes:
+    dbdata:
