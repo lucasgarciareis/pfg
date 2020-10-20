@@ -18,7 +18,7 @@ def create_app():
     #app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://projetofinal:password@localhost:3306/crud'
 
     #MySQL - Docker
-    app.config['SQLALCHEMY_DATABASE_URI']='mysql://root:password@localhost:54321/crud'
+    app.config['SQLALCHEMY_DATABASE_URI']='mysql://projetofinal:password@mysql/crud'
 
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 

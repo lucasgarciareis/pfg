@@ -1,0 +1,18 @@
+---Docker
+Obs: sempre navegar até o path do Dockerfile
+
+Para buildar imagem:
+docker build -t nome_da_imagem:tag .
+
+Para subir o container:
+docker run -p porta_externa:porta_exposed nome_da_imagem     (usar -d para rodar em background)
+
+Para acessar o bash:
+docker exec -it nome_container bash
+
+---Docker Composer (Usar este como preferência)
+Para buildar imagem(ns):
+docker-compose build nome_do_serviço (se não especificar, ele builda todos)
+
+Para subir container:
+docker-compose up nome_do_serviço (se não especificar, ele sobe todos)
