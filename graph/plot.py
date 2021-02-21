@@ -5,14 +5,8 @@ from matplotlib import pyplot as plt
 # api-endpoint
 URL = "http://0.0.0.0:54322/sound"
 
-# location given here
-location = "UnB"
-
-# defining a params dict for the parameters to be sent to the API
-PARAMS = {'address': location}
-
 # sending get request and saving the response as response object
-r = requests.get(url=URL, params=PARAMS)
+r = requests.get(url=URL)
 
 # extracting data in json format
 data = r.json()
