@@ -17,12 +17,11 @@ def postsound():
 
     data = request.get_json()
 
-    sound = request.json['sound']
+    lista = request.json['data']
 
-    new_sound = Sound(sound)
-
-    current_app.db.session.add(new_sound)
-
-    current_app.db.session.commit()
+    for sound in lista:
+        new_sound = Sound(sound)
+        current_app.db.session.add(new_sound)
+        current_app.db.session.commit()
 
     return jsonify(data), 201
