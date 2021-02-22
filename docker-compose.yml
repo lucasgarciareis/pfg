@@ -1,38 +1,52 @@
-version: '3.7'
+version: "3.7"
 
 networks:
-  net1:
-    name: net1
+    net1:
+        name: net1
 
 services:
-  mysql:
-    container_name: mysql
-    build:
-        context: ./db 
-    restart: unless-stopped
-    networks:
-        - net1
-    volumes:
-        - ./dbdata:/var/lib/mysql
-    command: mysqld --default-authentication-plugin=mysql_native_password --skip-mysqlx    
-    cap_add:
-      - SYS_NICE  # CAP_SYS_NICE
+    mysql:
+        container_name: mysql
+        build:
+            context: ./db
+        restart: unless-stopped
+        networks:
+            - net1
+        volumes:
+            - ./dbdata:/var/lib/mysql
+        command: mysqld --default-authentication-plugin=mysql_native_password --skip-mysqlx
+        cap_add:
+            - SYS_NICE # CAP_SYS_NICE
 
-  app:
-    container_name: app
-    ports:
-        - 54322:5000
-    build:
-        context: ./app 
-    restart: unless-stopped
-    networks:
-        - net1
-    links:
-        - mysql
-    volumes:
-        - ./app:/pfg
-    depends_on: 
-        - mysql
-    
+    app:
+        container_name: app
+        ports:
+            - 54322:5000
+        build:
+            context: ./app
+        restart: unless-stopped
+        networks:
+            - net1
+        links:
+            - mysql
+        volumes:
+            - ./app:/pfg
+        depends_on:
+            - mysql
+
+    grafana:
+        container_name: grafana
+        user: "$UID:$GID"
+        ports:
+            - 3000:3000
+        networks:
+            - net1
+        build:
+            context: ./grafana
+        links:
+            - mysql
+        volumes:
+            - ./grafana-data:/var/lib/grafana
+
 volumes:
     dbdata:
