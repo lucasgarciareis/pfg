@@ -1,7 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from time import time
 from datetime import datetime, timedelta
-from sqlalchemy.dialects.mysql import DATETIME
 
 db = SQLAlchemy()
 
@@ -15,9 +14,7 @@ def configure(app):
 class Sound(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     sound = db.Column(db.Float)
-    x = datetime.now()
-    z = (x - timedelta(hours=3)).time()
-    date = db.Column(DATETIME(6), default=z)
+    date = db.Column(db.Float, default=time())
 
     def __init__(self, sound, date):
         self.sound = sound
@@ -31,7 +28,7 @@ class Temperature(db.Model):
     #date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     x = time()
     z = datetime.fromtimestamp(x) - timedelta(hours=3)
-    date = db.Column(DATETIME(fsp=6), default=z)
+    date = db.Column(db.DateTime, default=z)
 
     def __init__(self, temperature):
         self.temperature = temperature
@@ -44,7 +41,7 @@ class Humidity(db.Model):
     #date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     x = time()
     z = datetime.fromtimestamp(x) - timedelta(hours=3)
-    date = db.Column(DATETIME(fsp=6), default=z)
+    date = db.Column(db.DateTime, default=z)
 
     def __init__(self, humidity):
         self.humidity = humidity
@@ -57,7 +54,7 @@ class Light(db.Model):
     #date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     x = time()
     z = datetime.fromtimestamp(x) - timedelta(hours=3)
-    date = db.Column(DATETIME(fsp=6), default=z)
+    date = db.Column(db.DateTime, default=z)
 
     def __init__(self, light):
         self.light = light
@@ -70,7 +67,7 @@ class Vibration(db.Model):
     #date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     x = time()
     z = datetime.fromtimestamp(x) - timedelta(hours=3)
-    date = db.Column(DATETIME(fsp=6), default=z)
+    date = db.Column(db.DateTime, default=z)
 
     def __init__(self, vibration):
         self.vibration = vibration

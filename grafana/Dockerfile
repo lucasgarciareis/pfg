@@ -7,4 +7,4 @@ ENV GF_AUTH_ANONYMOUS_ENABLED "true"
 # Role of anonymous user
 ENV GF_AUTH_ANONYMOUS_ORG_ROLE "Admin"
 
-RUN chown -R 472:472 /var/lib/grafana 
+RUN chown -R 472:472 /var/lib/grafana
