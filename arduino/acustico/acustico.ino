@@ -46,7 +46,6 @@ void loop()
     sensorValue = analogRead(soundPin);
     array.add(sensorValue);
     m_count--;
-    //delay(expected_delay);
     delay(expected_delay);
   }
   serializeJson(jsonDoc, Serial); //para printar na porta serial
