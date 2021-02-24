@@ -28,6 +28,6 @@ def postsound():
         new_sound = Sound(sound, received_time)
         current_app.db.session.add(new_sound)
         current_app.db.session.commit()
-        received_time += 0.016
+        received_time = received_time + 0.016
 
     return jsonify(data), 201

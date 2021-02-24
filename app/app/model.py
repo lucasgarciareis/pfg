@@ -1,6 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from time import time
-from datetime import datetime, timedelta
+#from datetime import datetime, timedelta
 
 db = SQLAlchemy()
 
@@ -26,7 +26,7 @@ class Temperature(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     temperature = db.Column(db.Float)
     #date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
-    date = db.Column(db.Float, default=time())
+    date = db.Column(db.Float)
 
     def __init__(self, temperature):
         self.temperature = temperature
@@ -37,7 +37,7 @@ class Humidity(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     humidity = db.Column(db.Integer)
     #date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
-    date = db.Column(db.Float, default=time())
+    date = db.Column(db.Float)
 
     def __init__(self, humidity):
         self.humidity = humidity
@@ -48,7 +48,7 @@ class Light(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     light = db.Column(db.Integer)
     #date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
-    date = db.Column(db.Float, default=time())
+    date = db.Column(db.Float)
 
     def __init__(self, light):
         self.light = light
@@ -59,7 +59,7 @@ class Vibration(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     vibration = db.Column(db.Boolean)
     #date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
-    date = db.Column(db.Float, default=time())
+    date = db.Column(db.Float)
 
     def __init__(self, vibration):
         self.vibration = vibration
