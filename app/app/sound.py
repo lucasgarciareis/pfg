@@ -25,7 +25,9 @@ def postsound():
     received_time = time() - 1
 
     for sound in lista:
-        new_sound = Sound(sound, received_time)
+        print(str(received_time) + ' : ' +
+              datetime.fromtimestamp(received_time).strftime('%Y-%m-%d %H:%M:%S.%f'))
+        new_sound = Sound(sound=sound, date=received_time)
         current_app.db.session.add(new_sound)
         current_app.db.session.commit()
         received_time = received_time + 0.016

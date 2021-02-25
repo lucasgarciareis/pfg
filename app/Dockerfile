@@ -9,6 +9,8 @@ COPY . /pfg
 RUN pip3 --no-cache-dir install -r requirements.txt     
 EXPOSE 5000
 
+ENV PYTHONUNBUFFERED=1
+
 RUN apt install -y tzdata && \
     ln -sf /usr/share/zoneinfo/America/Sao_Paulo \
     /etc/localtime && dpkg-reconfigure --frontend noninteractive tzdata
