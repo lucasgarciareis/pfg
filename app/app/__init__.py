@@ -10,15 +10,15 @@ def create_app():
     basedir = os.path.abspath(os.path.dirname(__file__))
 
     #sqlite - local
-    #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + \
+    # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + \
     #    os.path.join(basedir, 'crud.db')
 
     #MySQL - local
-    #app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://<mysql_username>:<mysql_password>@<mysql_host>:<mysql_port>/<mysql_db>'
-    #app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://projetofinal:password@localhost:3306/crud'
+    # app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://<mysql_username>:<mysql_password>@<mysql_host>:<mysql_port>/<mysql_db>'
+    # app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://projetofinal:password@localhost:3306/crud'
 
     #MySQL - Docker
-    app.config['SQLALCHEMY_DATABASE_URI']='mysql://projetofinal:password@mysql/crud'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://projetofinal:password@mysql/crud'
 
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
