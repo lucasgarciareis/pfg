@@ -11,7 +11,7 @@ const char *password = "fossi7310";
 int soundPin = A0;
 int ledPin = LED_BUILTIN;
 int sensorValue = 0;
-float m_count_init = 60; //amount of measurements made before the json is sent (every second)
+float m_count_init = 100; //amount of measurements made before the json is sent (every second)
 int m_count = m_count_init;
 
 int expected_delay = (1 / m_count_init) * 1000;
@@ -37,7 +37,8 @@ void setup()
 
 void loop()
 {
-  StaticJsonDocument<1024> jsonDoc;
+  //Use 2048 for 100 samples and 1024 for 60 samples
+  StaticJsonDocument<2048> jsonDoc;
   JsonArray array = jsonDoc.createNestedArray("data");
 
   //loop que coleta m_count_init vezes por segundo e monta o array
@@ -48,14 +49,14 @@ void loop()
     m_count--;
     delay(expected_delay);
   }
-  serializeJson(jsonDoc, Serial); //para printar na porta serial
-
+  //serializeJson(jsonDoc, Serial); //para printar na porta serial
   String json_serial;
   serializeJson(jsonDoc, json_serial);
+  Serial.println("Sending data...");
   send_data(json_serial);
 
   m_count = m_count_init;
-  delay(40); //Send a request every second
+  //delay(complete_second); //Send a request every second
 }
 
 void send_data(String data)

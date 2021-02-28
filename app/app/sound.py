@@ -22,14 +22,14 @@ def postsound():
 
     lista = request.json['data']
 
-    received_time = time() - 1
+    received_time = time() - 1.01
 
     for sound in lista:
+        received_time = received_time + 0.01
         print(str(received_time) + ' : ' +
               datetime.fromtimestamp(received_time).strftime('%Y-%m-%d %H:%M:%S.%f'))
         new_sound = Sound(sound, received_time)
         current_app.db.session.add(new_sound)
-        received_time = received_time + 0.016
 
     current_app.db.session.commit()
     return jsonify(data), 201
