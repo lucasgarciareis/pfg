@@ -77,8 +77,9 @@
 #include "cJSON.h"
 
 /* constant definitions ***************************************************** */
-#define  XDK_APP_DELAY      UINT32_C(1000)
-#define  count_init			UINT32_C(5)		//quantidade de medições por envio
+//#define  XDK_APP_DELAY      UINT32_C(1000)
+#define  count_init			20		//quantidade de medições por envio
+#define  SERVER_IP			"192.168.0.5"
 /* local variables ********************************************************** */
 
 static CmdProcessor_T * AppCmdProcessor;/**< Handle to store the main Command processor handle to be used by run-time event driven threads */
@@ -133,6 +134,8 @@ retcode_t writeNextPartToBuffer(OutMsgSerializationHandover_T* handover)
      payload = cJSON_Print(Jsonzao);
      cJSON_Minify(payload);
      printf("%s\r\n", payload);
+
+     cJSON_Delete(Jsonzao);
 
 
      /*
@@ -213,6 +216,7 @@ retcode_t writeNextPartToBuffer(OutMsgSerializationHandover_T* handover)
 	memcpy(handover->buf_ptr, payload + alreadySerialized, bytesToCopy);
 	handover->offset = alreadySerialized + bytesToCopy;
 	handover->len = bytesToCopy;
+	free(payload);
 	return rc;
 }
 
@@ -238,8 +242,8 @@ static retcode_t onHTTPResponseReceived(HttpSession_T *httpSession, Msg_T *msg_p
 		char content[contentLength+1];
 		strncpy(content, content_ptr, contentLength);
 		content[contentLength] = 0;
-		printf("HTTP RESPONSE: %d [%s]\r\n", statusCode, contentType);
-		printf("%s\r\n", content);
+		//printf("HTTP RESPONSE: %d [%s]\r\n", statusCode, contentType);
+		//printf("%s\r\n", content);
 	}
 	else
 	{
@@ -280,10 +284,11 @@ static void AppControllerFire(void* pvParameters)
     	    if (RETCODE_OK == retcode)
     	    {
     	        //printf("Noise Sensor RMS Voltage :Vrms = %f \r\n", sensorValue.Noise);
-    	    	int i = 20-count;
+    	    	int i = count_init-count;
     	    	values[i]=sensorValue.Noise;
+    	    	//printf("antes: %f\n", values[i]);
     	    }
-
+	    	//printf("depois: %f\n", values[4]);
     	     if (RETCODE_OK != retcode)
     	     {
     	      Retcode_RaiseError(retcode);
@@ -303,7 +308,7 @@ static void AppControllerFire(void* pvParameters)
     	    if (SensorSetup.Enable.Noise)
     	    	{
     	        //printf("Noise Sensor RMS Voltage :Vrms = %f \r\n", sensorValue.Noise);
-    	    	int i = 20-count;
+    	    	int i = count_init-count;
     	    	values[i]=sensorValue.Noise;
     	    	}
     	    }
@@ -314,22 +319,24 @@ static void AppControllerFire(void* pvParameters)
     	     }
     	     count = count_init;
     	        Ip_Address_T destAddr;
-    	        PAL_getIpaddress((uint8_t*) "httpbin.org", &destAddr);
-    	        Ip_Port_T port = Ip_convertIntToPort(80);
+    	        PAL_getIpaddress((uint8_t*) SERVER_IP, &destAddr);
+    	        Ip_Port_T port = Ip_convertIntToPort(54322);
 
     	        Msg_T* msg_prt;
     	        HttpClient_initRequest(&destAddr, port, &msg_prt);
     	        HttpMsg_setReqMethod(msg_prt, Http_Method_Post);
-    	        HttpMsg_setReqUrl(msg_prt,"/post");
-    	        HttpMsg_setHost(msg_prt,"httpbin.org");
+    	        HttpMsg_setReqUrl(msg_prt,"/sound");
+    	        HttpMsg_setHost(msg_prt,SERVER_IP);
 
     	        HttpMsg_setContentType(msg_prt, Http_ContentType_App_Json);
     	        Msg_prependPartFactory(msg_prt, &writeNextPartToBuffer);
 
     	        static Callable_T sentCallable;
+
     	        Callable_assign(&sentCallable, &onHTTPRequestSent);
 
     	        HttpClient_pushRequest(msg_prt, &sentCallable, &onHTTPResponseReceived);
+
     	}
 
 }
@@ -377,7 +384,7 @@ static void AppControllerSetup(void * param1, uint32_t param2)
 
     networkSetup();
 
-      	uint32_t oneSecondDelay = UINT32_C(200);
+      	uint32_t oneSecondDelay = UINT32_C(50);
         uint32_t timerAutoReloadOn = UINT32_C(1);
 
         Retcode_T retcode = Sensor_Setup(&SensorSetup);
