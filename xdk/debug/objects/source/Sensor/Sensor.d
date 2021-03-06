@@ -1,4 +1,4 @@
-/root/XDK-Workspace/post_f/debug/objects/source/Sensor/Sensor.o: \
+D:/IOT/pfg/xdk/debug/objects/source/Sensor/Sensor.o: \
  source/Sensor/Sensor.c ../Common/include/XdkCommonInfo.h \
  ../Platform/Essentials/include/BCDS_Retcode.h \
  ../Platform/Essentials/include/BCDS_Basics.h \
@@ -7,6 +7,12 @@
  ../Platform/Utils/include/BCDS_Utils.h \
  ../Common/config/Utils/BCDS_UtilsConfig.h \
  ../Platform/Essentials/include/BCDS_Basics.h \
+ ../Platform/BSP/include/BSP_BoardType.h \
+ ../Platform/Essentials/include/bsp/BCDS_BSP_Board.h \
+ ../Platform/Essentials/include/BCDS_HAL.h \
+ ../Platform/Essentials/include/BCDS_Retcode.h \
+ ../Common/config/Essentials/BCDS_HALConfig.h \
+ ../Platform/Essentials/include/bsp/BCDS_BSP_SensorNode.h \
  ../Common/include/Sensor/XDK_SensorHandle.h \
  ../Platform/Sensors/include/BCDS_Accelerometer.h \
  ../Platform/Sensors/include/BCDS_Gyroscope.h \
@@ -25,16 +31,7 @@
  ../Platform/SensorToolbox/include/BCDS_FingerPrint.h \
  ../Platform/SensorToolbox/include/BCDS_LinearAcceleration.h \
  ../Platform/SensorToolbox/include/BCDS_Gestures.h \
- ../Platform/BSP/include/BSP_BoardType.h \
- ../Platform/Essentials/include/bsp/BCDS_BSP_Board.h \
- ../Platform/Essentials/include/BCDS_HAL.h \
- ../Platform/Essentials/include/BCDS_Retcode.h \
- ../Common/config/Essentials/BCDS_HALConfig.h \
- ../Platform/Essentials/include/bsp/BCDS_BSP_SensorNode.h \
- ../Common/include/Sensor/XDK_SensorHandle.h \
- ../Common/include/Sensor/XDK_NoiseSensor.h \
- ../Platform/SensorUtils/include/BCDS_Bma280Utils.h \
- ../Platform/SensorUtils/include/BCDS_AxisRemap.h
+ ../Common/include/Sensor/XDK_NoiseSensor.h
 
 ../Common/include/XdkCommonInfo.h:
 
@@ -51,6 +48,18 @@
 ../Common/config/Utils/BCDS_UtilsConfig.h:
 
 ../Platform/Essentials/include/BCDS_Basics.h:
+
+../Platform/BSP/include/BSP_BoardType.h:
+
+../Platform/Essentials/include/bsp/BCDS_BSP_Board.h:
+
+../Platform/Essentials/include/BCDS_HAL.h:
+
+../Platform/Essentials/include/BCDS_Retcode.h:
+
+../Common/config/Essentials/BCDS_HALConfig.h:
+
+../Platform/Essentials/include/bsp/BCDS_BSP_SensorNode.h:
 
 ../Common/include/Sensor/XDK_SensorHandle.h:
 
@@ -88,22 +97,4 @@
 
 ../Platform/SensorToolbox/include/BCDS_Gestures.h:
 
-../Platform/BSP/include/BSP_BoardType.h:
-
-../Platform/Essentials/include/bsp/BCDS_BSP_Board.h:
-
-../Platform/Essentials/include/BCDS_HAL.h:
-
-../Platform/Essentials/include/BCDS_Retcode.h:
-
-../Common/config/Essentials/BCDS_HALConfig.h:
-
-../Platform/Essentials/include/bsp/BCDS_BSP_SensorNode.h:
-
-../Common/include/Sensor/XDK_SensorHandle.h:
-
 ../Common/include/Sensor/XDK_NoiseSensor.h:
-
-../Platform/SensorUtils/include/BCDS_Bma280Utils.h:
-
-../Platform/SensorUtils/include/BCDS_AxisRemap.h:

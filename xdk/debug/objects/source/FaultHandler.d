@@ -1,5 +1,4 @@
-/root/XDK-Workspace/post_f/debug/objects/source/FaultHandler.o: \
- source/FaultHandler.c \
+D:/IOT/pfg/xdk/debug/objects/source/FaultHandler.o: source/FaultHandler.c \
  ../Platform/Essentials/include/bsp/BCDS_BSP_Board.h \
  ../Platform/Essentials/include/BCDS_HAL.h \
  ../Platform/Essentials/include/BCDS_Retcode.h \

@@ -1,4 +1,4 @@
-/root/XDK-Workspace/post_f/debug/objects/source/Connectivity/BLE/GridEyeService.o: \
+D:/IOT/pfg/xdk/debug/objects/source/Connectivity/BLE/GridEyeService.o: \
  source/Connectivity/BLE/GridEyeService.c \
  ../Common/include/XdkCommonInfo.h \
  ../Platform/Essentials/include/BCDS_Retcode.h \

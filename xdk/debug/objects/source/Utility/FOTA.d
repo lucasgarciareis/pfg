@@ -1,5 +1,5 @@
-/root/XDK-Workspace/post_f/debug/objects/source/Utility/FOTA.o: \
- source/Utility/FOTA.c ../Common/include/XdkCommonInfo.h \
+D:/IOT/pfg/xdk/debug/objects/source/Utility/FOTA.o: source/Utility/FOTA.c \
+ ../Common/include/XdkCommonInfo.h \
  ../Platform/Essentials/include/BCDS_Retcode.h \
  ../Platform/Essentials/include/BCDS_Basics.h \
  ../Platform/FOTA/include/BCDS_Fota.h \

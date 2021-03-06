@@ -1,4 +1,4 @@
-/root/XDK-Workspace/post_f/debug/objects/source/Connectivity/BLE/BleDeviceInfoService.o: \
+D:/IOT/pfg/xdk/debug/objects/source/Connectivity/BLE/BleDeviceInfoService.o: \
  source/Connectivity/BLE/BleDeviceInfoService.c \
  ../Platform/Essentials/include/BCDS_Basics.h \
  ../Platform/Essentials/include/BCDS_Retcode.h \

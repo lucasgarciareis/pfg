@@ -1,2 +1,2 @@
-/root/XDK-Workspace/post_f/debug/objects/source/Private/ServalStack/src/TLS_MbedTLS/MbedTLS_Tls.o: \
+D:/IOT/pfg/xdk/debug/objects/source/Private/ServalStack/src/TLS_MbedTLS/MbedTLS_Tls.o: \
  source/Private/ServalStack/src/TLS_MbedTLS/MbedTLS_Tls.c

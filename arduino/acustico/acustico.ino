@@ -37,7 +37,7 @@ void setup()
 
 void loop()
 {
-  //Use 2048 for 100 samples and 1024 for 60 samples
+  //Use 2048 for 100 samples and 1024 for 50 samples
   StaticJsonDocument<2048> jsonDoc;
   JsonArray array = jsonDoc.createNestedArray("data");
 
@@ -66,7 +66,7 @@ void send_data(String data)
 
     HTTPClient http; //Declare object of class HTTPClient
 
-    http.begin("http://192.168.0.11:54322/sound");      //Specify request destination
+    http.begin("http://192.168.0.5:54322/sound");      //Specify request destination
     http.addHeader("Content-Type", "application/json"); //Specify content-type header
 
     int httpCode = http.POST(data);    //Send the request

@@ -1,4 +1,4 @@
-/root/XDK-Workspace/post_f/debug/objects/source/Connectivity/LWM2M/LWM2MObjectConnectivityMonitoring.o: \
+D:/IOT/pfg/xdk/debug/objects/source/Connectivity/LWM2M/LWM2MObjectConnectivityMonitoring.o: \
  source/Connectivity/LWM2M/LWM2MObjectConnectivityMonitoring.c \
  ../Common/include/XdkCommonInfo.h \
  ../Platform/Essentials/include/BCDS_Retcode.h \

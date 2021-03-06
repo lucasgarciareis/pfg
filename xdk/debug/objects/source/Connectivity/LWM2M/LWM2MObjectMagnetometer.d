@@ -1,4 +1,4 @@
-/root/XDK-Workspace/post_f/debug/objects/source/Connectivity/LWM2M/LWM2MObjectMagnetometer.o: \
+D:/IOT/pfg/xdk/debug/objects/source/Connectivity/LWM2M/LWM2MObjectMagnetometer.o: \
  source/Connectivity/LWM2M/LWM2MObjectMagnetometer.c \
  ../Common/include/XdkCommonInfo.h \
  ../Platform/Essentials/include/BCDS_Retcode.h \

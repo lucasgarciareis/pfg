@@ -74,10 +74,11 @@
 #include "PIp.h"
 #include "timers.h"
 #include "XdkSensorHandle.h"
+#include "cJSON.h"
 
 /* constant definitions ***************************************************** */
 #define  XDK_APP_DELAY      UINT32_C(1000)
-#define APP_TEMPERATURE_OFFSET_CORRECTION   (-3459)
+#define  count_init			UINT32_C(5)		//quantidade de medições por envio
 /* local variables ********************************************************** */
 
 static CmdProcessor_T * AppCmdProcessor;/**< Handle to store the main Command processor handle to be used by run-time event driven threads */
@@ -86,7 +87,8 @@ static xTaskHandle AppControllerHandle = NULL;/**< OS thread handle for Applicat
 
 
 /* global variables ********************************************************* */
-
+int count = count_init;
+float values[count_init];		//array de valores coletados por envio
 /* inline functions ********************************************************* */
 
 /* local functions ********************************************************** */
@@ -101,60 +103,48 @@ static xTaskHandle AppControllerHandle = NULL;/**< OS thread handle for Applicat
  */
 
 static Sensor_Setup_T SensorSetup =
-        {
-                .CmdProcessorHandle = NULL,
-                .Enable =
-                        {
-                                .Accel = true,
-                                .Mag = true,
-                                .Gyro = true,
-                                .Humidity = true,
-                                .Temp = true,
-                                .Pressure = true,
-                                .Light = true,
-                                .Noise = false,
-                        },
-                .Config =
-                        {
-
-                                .Accel =
-                                        {
-                                                .Type = SENSOR_ACCEL_BMA280,
-                                                .IsRawData = false,
-                                                .IsInteruptEnabled = false,
-
-                                        },
-                                .Gyro =
-                                        {
-                                                .Type = SENSOR_GYRO_BMG160,
-                                                .IsRawData = false,
-                                        },
-                                .Mag =
-                                        {
-                                                .IsRawData = false,
-                                        },
-                                .Light =
-                                        {
-                                                .IsInteruptEnabled = false,
-
-                                        },
-                                .Temp =
-                                        {
-                                                .OffsetCorrection = APP_TEMPERATURE_OFFSET_CORRECTION,
-                                        },
-
-                        },
-        };
+{
+   .CmdProcessorHandle = NULL,
+   .Enable =
+      {
+         .Accel = false,
+         .Mag = false,
+         .Gyro = false,
+         .Humidity = false,
+         .Temp = false,
+         .Pressure = false,
+         .Light = false,
+         .Noise = true,
+       },
+};/**< Sensor setup parameters */
 
 retcode_t writeNextPartToBuffer(OutMsgSerializationHandover_T* handover)
 {
-	 Sensor_Value_T sensorValue;
 
-	 memset(&sensorValue, 0x00, sizeof(sensorValue));
+     //vTaskDelay(pdMS_TO_TICKS(APP_CONTROLLER_TX_DELAY));
 
-	 Sensor_GetData(&sensorValue);
+     static char *payload;
+     static cJSON *Jsonzao;
 
-     float AccelX = ((long int) sensorValue.Accel.X * 0.00980665);
+     Jsonzao = cJSON_CreateObject();
+
+     cJSON_AddItemToObject(Jsonzao, "data", cJSON_CreateFloatArray(values,count_init));
+
+     payload = cJSON_Print(Jsonzao);
+     cJSON_Minify(payload);
+     printf("%s\r\n", payload);
+
+
+     /*
+	char str[10];
+	char str0[100];
+	snprintf(str0,100, "%s", "{\n\t\"Sound\": ");
+	snprintf(str,10, "%f", sensorValue.Noise);
+	strcat(str0,str);
+    strcat(str0, "\n}");
+    */
+
+/*     float AccelX = ((long int) sensorValue.Accel.X * 0.00980665);
      float AccelY = ((long int) sensorValue.Accel.Y * 0.00980665);
      float AccelZ = ((long int) sensorValue.Accel.Z * 0.00980665);
      float temp = ((long int) sensorValue.Temp * 1000);
@@ -200,9 +190,10 @@ retcode_t writeNextPartToBuffer(OutMsgSerializationHandover_T* handover)
      snprintf(str,10, "%ld",(long int) sensorValue.RH);
      strcat(str0, str);
      strcat(str0, "\n}");
+*/
 
-    printf("payload %s \r\n",str0);
-	const char* payload = str0;
+    //printf("payload %s \r\n",payload);
+	//const char* payload = str0;
 	uint16_t payloadLength = (uint16_t) strlen(payload);
 	uint16_t alreadySerialized = handover->offset;
 	uint16_t remainingLength = payloadLength - alreadySerialized;
@@ -231,6 +222,7 @@ static retcode_t onHTTPRequestSent ( Callable_T *callfunc, retcode_t status)
 		if (status != RC_OK){
 			printf("Falha em enviar o HTTP request!\r\n");
 		}
+	return(RC_OK);
 }
 
 static retcode_t onHTTPResponseReceived(HttpSession_T *httpSession, Msg_T *msg_ptr, retcode_t status)
@@ -261,8 +253,8 @@ static retcode_t onHTTPResponseReceived(HttpSession_T *httpSession, Msg_T *msg_p
 
 void networkSetup(void) {
 
-	WlanConnect_SSID_T connectSSID = (WlanConnect_SSID_T) "TCP_IP";
-	WlanConnect_PassPhrase_T connectPassPhrase = (WlanConnect_PassPhrase_T) "batata123";
+	WlanConnect_SSID_T connectSSID = (WlanConnect_SSID_T) "FOSSI";
+	WlanConnect_PassPhrase_T connectPassPhrase = (WlanConnect_PassPhrase_T) "fossi7310";
 	WlanConnect_Init();
 	NetworkConfig_SetIpDhcp(0);
 	WlanConnect_WPA(connectSSID,connectPassPhrase, NULL);
@@ -277,24 +269,69 @@ static void AppControllerFire(void* pvParameters)
 {
     BCDS_UNUSED(pvParameters);
 
-        Ip_Address_T destAddr;
-        PAL_getIpaddress((uint8_t*) "192.168.0.13", &destAddr);
-        Ip_Port_T port = Ip_convertIntToPort(8000);
+    	if(count > 1){
+    		Sensor_Value_T sensorValue;
+    		Retcode_T retcode = RETCODE_OK;
 
-        Msg_T* msg_prt;
-        HttpClient_initRequest(&destAddr, port, &msg_prt);
-        HttpMsg_setReqMethod(msg_prt, Http_Method_Post);
-        HttpMsg_setReqUrl(msg_prt,"/sensors");
-        HttpMsg_setHost(msg_prt,"192.168.0.13");
+    		memset(&sensorValue, 0x00, sizeof(sensorValue));
 
-        HttpMsg_setContentType(msg_prt, Http_ContentType_App_Json);
+    		retcode = Sensor_GetData(&sensorValue);
 
-        Msg_prependPartFactory(msg_prt, &writeNextPartToBuffer);
+    	    if (RETCODE_OK == retcode)
+    	    {
+    	        //printf("Noise Sensor RMS Voltage :Vrms = %f \r\n", sensorValue.Noise);
+    	    	int i = 20-count;
+    	    	values[i]=sensorValue.Noise;
+    	    }
 
-        static Callable_T sentCallable;
-        Callable_assign(&sentCallable, &onHTTPRequestSent);
+    	     if (RETCODE_OK != retcode)
+    	     {
+    	      Retcode_RaiseError(retcode);
+    	     }
+    	count--;
+    	}
+    	else if(count==1){
+    		Sensor_Value_T sensorValue;
+    		Retcode_T retcode = RETCODE_OK;
 
-        HttpClient_pushRequest(msg_prt, &sentCallable, &onHTTPResponseReceived);
+    		memset(&sensorValue, 0x00, sizeof(sensorValue));
+
+    		retcode = Sensor_GetData(&sensorValue);
+
+    	    if (RETCODE_OK == retcode)
+    	    {
+    	    if (SensorSetup.Enable.Noise)
+    	    	{
+    	        //printf("Noise Sensor RMS Voltage :Vrms = %f \r\n", sensorValue.Noise);
+    	    	int i = 20-count;
+    	    	values[i]=sensorValue.Noise;
+    	    	}
+    	    }
+
+    	     if (RETCODE_OK != retcode)
+    	     {
+    	      Retcode_RaiseError(retcode);
+    	     }
+    	     count = count_init;
+    	        Ip_Address_T destAddr;
+    	        PAL_getIpaddress((uint8_t*) "httpbin.org", &destAddr);
+    	        Ip_Port_T port = Ip_convertIntToPort(80);
+
+    	        Msg_T* msg_prt;
+    	        HttpClient_initRequest(&destAddr, port, &msg_prt);
+    	        HttpMsg_setReqMethod(msg_prt, Http_Method_Post);
+    	        HttpMsg_setReqUrl(msg_prt,"/post");
+    	        HttpMsg_setHost(msg_prt,"httpbin.org");
+
+    	        HttpMsg_setContentType(msg_prt, Http_ContentType_App_Json);
+    	        Msg_prependPartFactory(msg_prt, &writeNextPartToBuffer);
+
+    	        static Callable_T sentCallable;
+    	        Callable_assign(&sentCallable, &onHTTPRequestSent);
+
+    	        HttpClient_pushRequest(msg_prt, &sentCallable, &onHTTPResponseReceived);
+    	}
+
 }
 
 /**
@@ -340,7 +377,7 @@ static void AppControllerSetup(void * param1, uint32_t param2)
 
     networkSetup();
 
-      	uint32_t oneSecondDelay = UINT32_C(10000);
+      	uint32_t oneSecondDelay = UINT32_C(200);
         uint32_t timerAutoReloadOn = UINT32_C(1);
 
         Retcode_T retcode = Sensor_Setup(&SensorSetup);

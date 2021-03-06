@@ -1,4 +1,4 @@
-/root/XDK-Workspace/post_f/debug/objects/source/Connectivity/LWM2M/LWM2MObjectDevice.o: \
+D:/IOT/pfg/xdk/debug/objects/source/Connectivity/LWM2M/LWM2MObjectDevice.o: \
  source/Connectivity/LWM2M/LWM2MObjectDevice.c \
  ../Common/include/XdkCommonInfo.h \
  ../Platform/Essentials/include/BCDS_Retcode.h \

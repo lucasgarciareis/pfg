@@ -45,6 +45,7 @@
 /* header definition ******************************************************** */
 #ifndef APPCONTROLLER_H_
 #define APPCONTROLLER_H_
+#define APP_CONTROLLER_TX_DELAY             UINT32_C(200)
 
 /* local interface declaration ********************************************** */
 #include "XDK_Utils.h"

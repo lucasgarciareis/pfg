@@ -1,4 +1,4 @@
-/root/XDK-Workspace/post_f/debug/objects/source/Connectivity/UDP.o: \
+D:/IOT/pfg/xdk/debug/objects/source/Connectivity/UDP.o: \
  source/Connectivity/UDP.c ../Common/include/XdkCommonInfo.h \
  ../Platform/Essentials/include/BCDS_Retcode.h \
  ../Platform/Essentials/include/BCDS_Basics.h \

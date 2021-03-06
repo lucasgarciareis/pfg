@@ -1,5 +1,5 @@
-/root/XDK-Workspace/post_f/debug/objects/source/Adc/Mcu_Adc.o: \
- source/Adc/Mcu_Adc.c source/Adc/Mcu_Adc_Handle.h source/Adc/Mcu_Adc.h \
+D:/IOT/pfg/xdk/debug/objects/source/Adc/Mcu_Adc.o: source/Adc/Mcu_Adc.c \
+ source/Adc/Mcu_Adc_Handle.h source/Adc/Mcu_Adc.h \
  ../Platform/Essentials/include/BCDS_HAL.h \
  ../Platform/Essentials/include/BCDS_Retcode.h \
  ../Platform/Essentials/include/BCDS_Basics.h \

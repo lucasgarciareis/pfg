@@ -1,4 +1,4 @@
-/root/XDK-Workspace/post_f/debug/objects/legacy/source/NetworkConfig.o: \
+D:/IOT/pfg/xdk/debug/objects/legacy/source/NetworkConfig.o: \
  legacy/source/NetworkConfig.c ../Common/include/XdkCommonInfo.h \
  ../Platform/Essentials/include/BCDS_Retcode.h \
  ../Platform/Essentials/include/BCDS_Basics.h \

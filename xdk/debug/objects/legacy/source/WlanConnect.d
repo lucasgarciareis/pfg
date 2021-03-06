@@ -1,4 +1,4 @@
-/root/XDK-Workspace/post_f/debug/objects/legacy/source/WlanConnect.o: \
+D:/IOT/pfg/xdk/debug/objects/legacy/source/WlanConnect.o: \
  legacy/source/WlanConnect.c ../Common/include/XdkCommonInfo.h \
  ../Platform/Essentials/include/BCDS_Retcode.h \
  ../Platform/Essentials/include/BCDS_Basics.h \

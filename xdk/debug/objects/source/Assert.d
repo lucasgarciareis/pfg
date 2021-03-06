@@ -1,4 +1,4 @@
-/root/XDK-Workspace/post_f/debug/objects/source/Assert.o: source/Assert.c \
+D:/IOT/pfg/xdk/debug/objects/source/Assert.o: source/Assert.c \
  ../Platform/Essentials/include/BCDS_Essentials.h \
  ../Platform/Essentials/include/BCDS_HAL.h \
  ../Platform/Essentials/include/BCDS_Retcode.h \

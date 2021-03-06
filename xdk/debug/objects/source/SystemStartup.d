@@ -1,4 +1,4 @@
-/root/XDK-Workspace/post_f/debug/objects/source/SystemStartup.o: \
+D:/IOT/pfg/xdk/debug/objects/source/SystemStartup.o: \
  source/SystemStartup.c ../Common/include/XdkCommonInfo.h \
  ../Platform/Essentials/include/BCDS_Retcode.h \
  ../Platform/Essentials/include/BCDS_Basics.h \
