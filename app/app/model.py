@@ -14,7 +14,7 @@ def configure(app):
 class Sound(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     sound = db.Column(db.Float)
-    date = db.Column(db.Numeric(precision=10, scale=3,
+    date = db.Column(db.Numeric(precision=17, scale=7,
                                 asdecimal=False))
 
     def __init__(self, sound, date):

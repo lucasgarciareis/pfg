@@ -22,10 +22,10 @@ def postsound():
 
     lista = request.json['data']
 
-    received_time = time() - 1.05
+    received_time = time() - 3.2
 
     for sound in lista:
-        received_time = received_time + 0.05
+        received_time = received_time + 0.1
         # print(str(received_time) + ' : ' +
         #      datetime.fromtimestamp(received_time).strftime('%Y-%m-%d %H:%M:%S.%f'))
         new_sound = Sound(sound, received_time)

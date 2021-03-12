@@ -8,7 +8,10 @@ D:/IOT/pfg/xdk/debug/objects/source/Connectivity/WLAN.o: \
  ../Platform/Essentials/include/BCDS_Basics.h \
  source/Connectivity/WLANHostPgm.h \
  ../Platform/Wlan/include/BCDS_WlanNetworkConfig.h \
- ../Common/source/Protected/wlan.h
+ ../Common/source/Protected/wlan.h \
+ ../Platform/Essentials/include/bsp/BCDS_BSP_Board.h \
+ ../Platform/Essentials/include/BCDS_HAL.h \
+ ../Common/config/Essentials/BCDS_HALConfig.h
 
 ../Common/include/XdkCommonInfo.h:
 
@@ -29,3 +32,9 @@ source/Connectivity/WLANHostPgm.h:
 ../Platform/Wlan/include/BCDS_WlanNetworkConfig.h:
 
 ../Common/source/Protected/wlan.h:
+
+../Platform/Essentials/include/bsp/BCDS_BSP_Board.h:
+
+../Platform/Essentials/include/BCDS_HAL.h:
+
+../Common/config/Essentials/BCDS_HALConfig.h:

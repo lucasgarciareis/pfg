@@ -12,12 +12,6 @@ D:/IOT/pfg/xdk/debug/objects/AppController.o: \
  ../Platform/Utils/include/BCDS_Utils.h \
  ../Common/config/Utils/BCDS_UtilsConfig.h \
  ../Common/include/Sensor/XDK_Sensor.h \
- ../Common/legacy/include/BCDS_WlanConnect.h \
- ../Common/legacy/include/BCDS_NetworkConfig.h \
- ../Platform/Wlan/include/BCDS_WlanNetworkConnect.h \
- ../Common/legacy/include/BCDS_NetworkConfig.h \
- ../Common/legacy/include/ServalPAL_WiFi/PAL_socketMonitor_ih.h \
- ../Common/legacy/include/XdkSensorHandle.h \
  ../Common/include/Sensor/XDK_SensorHandle.h \
  ../Platform/Sensors/include/BCDS_Accelerometer.h \
  ../Platform/Sensors/include/BCDS_Gyroscope.h \
@@ -36,7 +30,13 @@ D:/IOT/pfg/xdk/debug/objects/AppController.o: \
  ../Platform/SensorToolbox/include/BCDS_FingerPrint.h \
  ../Platform/SensorToolbox/include/BCDS_LinearAcceleration.h \
  ../Platform/SensorToolbox/include/BCDS_Gestures.h \
- ../Common/include/cJSON.h
+ ../Common/legacy/include/BCDS_WlanConnect.h \
+ ../Common/legacy/include/BCDS_NetworkConfig.h \
+ ../Platform/Wlan/include/BCDS_WlanNetworkConnect.h \
+ ../Common/legacy/include/BCDS_NetworkConfig.h \
+ ../Common/legacy/include/ServalPAL_WiFi/PAL_socketMonitor_ih.h \
+ ../Common/legacy/include/XdkSensorHandle.h \
+ ../Common/include/Sensor/XDK_SensorHandle.h ../Common/include/cJSON.h
 
 D:/IOT/pfg/xdk/source/XdkAppInfo.h:
 
@@ -63,18 +63,6 @@ D:/IOT/pfg/xdk/source/AppController.h:
 ../Common/config/Utils/BCDS_UtilsConfig.h:
 
 ../Common/include/Sensor/XDK_Sensor.h:
-
-../Common/legacy/include/BCDS_WlanConnect.h:
-
-../Common/legacy/include/BCDS_NetworkConfig.h:
-
-../Platform/Wlan/include/BCDS_WlanNetworkConnect.h:
-
-../Common/legacy/include/BCDS_NetworkConfig.h:
-
-../Common/legacy/include/ServalPAL_WiFi/PAL_socketMonitor_ih.h:
-
-../Common/legacy/include/XdkSensorHandle.h:
 
 ../Common/include/Sensor/XDK_SensorHandle.h:
 
@@ -111,5 +99,19 @@ D:/IOT/pfg/xdk/source/AppController.h:
 ../Platform/SensorToolbox/include/BCDS_LinearAcceleration.h:
 
 ../Platform/SensorToolbox/include/BCDS_Gestures.h:
+
+../Common/legacy/include/BCDS_WlanConnect.h:
+
+../Common/legacy/include/BCDS_NetworkConfig.h:
+
+../Platform/Wlan/include/BCDS_WlanNetworkConnect.h:
+
+../Common/legacy/include/BCDS_NetworkConfig.h:
+
+../Common/legacy/include/ServalPAL_WiFi/PAL_socketMonitor_ih.h:
+
+../Common/legacy/include/XdkSensorHandle.h:
+
+../Common/include/Sensor/XDK_SensorHandle.h:
 
 ../Common/include/cJSON.h:
