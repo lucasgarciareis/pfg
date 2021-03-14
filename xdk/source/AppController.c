@@ -52,7 +52,7 @@ static float32_t *fftOutputComplex;
 /** Magnitude of complex numbers in FFT output. */
 static float32_t *fftOutputMag;
 
-#define SAMPLING_FREQUENCY UINT32_C(50) //remember to change inside findHighestMagnitudeAndFrequency function
+#define SAMPLING_FREQUENCY UINT32_C(20) //remember to change inside findHighestMagnitudeAndFrequency function
 
 #define ACOUSTIC_BUFFER_SIZE UINT32_C(64)
 
@@ -74,7 +74,7 @@ void findHighestMagnitudeAndFrequency(float32_t *FFTmagnitudes, float32_t window
 	uint32_t maxIndex;
 	float32_t freqVal;
 
-	float32_t samplingFrequency = 50;
+	float32_t samplingFrequency = 20;
 
 	arm_max_f32(FFTmagnitudes,
 				windowSize / 2,
