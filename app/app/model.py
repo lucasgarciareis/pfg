@@ -59,8 +59,8 @@ class Light(db.Model):
 class Vibration(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     vibration = db.Column(db.Boolean)
-    # date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
-    date = db.Column(db.Float)
+    date = db.Column(db.Numeric(precision=17, scale=7, asdecimal=False))
 
-    def __init__(self, vibration):
+    def __init__(self, vibration, date):
         self.vibration = vibration
+        self.date = date

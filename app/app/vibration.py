@@ -1,6 +1,8 @@
 from flask import Blueprint, current_app, request, jsonify
 from .model import Vibration
 from .serializer import VibrationSchema
+from time import time
+from datetime import datetime, timedelta
 
 bp_vibration = Blueprint('vibration', __name__)
 
@@ -19,7 +21,9 @@ def postvibr():
 
     vibration = request.json['vibration']
 
-    new_vibration = Vibration(vibration)
+    received_time = time()
+
+    new_vibration = Vibration(vibration, received_time)
 
     current_app.db.session.add(new_vibration)
 
