@@ -1,5 +1,6 @@
 from flask import Blueprint, current_app, request, jsonify
 from .model import Temperature, Humidity, Light
+from time import time
 from .serializer import TemperatureSchema, LightSchema, HumiditySchema
 
 bp_xdk = Blueprint('xdk', __name__)
@@ -35,9 +36,11 @@ def posttemp():
     humd = request.json['humidity']
     light = request.json['light']
 
-    new_temp = Temperature(temp)
-    new_humd = Humidity(humd)
-    new_light = Light(light)
+    received_time = time()
+
+    new_temp = Temperature(temp, received_time)
+    new_humd = Humidity(humd, received_time)
+    new_light = Light(light, received_time)
 
     current_app.db.session.add(new_temp)
     current_app.db.session.add(new_humd)
