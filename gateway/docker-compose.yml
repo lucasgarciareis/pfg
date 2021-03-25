@@ -1,4 +1,7 @@
 version: '3.7'
+networks:
+    net2:
+        name: net2
 
 services:
 
@@ -9,3 +12,13 @@ services:
         build:
             context: ./prod
         restart: unless-stopped
+        networks:
+            - net1
+
+    broker:
+        container_name: broker
+        build:
+            context: ./broker
+        restart: unless-stopped
+        networks:
+            - net1     

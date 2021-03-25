@@ -9,18 +9,17 @@ app = Flask(__name__)
 
 @app.route('/sound', methods=['POST'])
 def post_sound():
-    data = request.get_json()
-    lista = request.json['data']
     connection = pika.BlockingConnection(pika.ConnectionParameters('broker'))
     channel = connection.channel()
 
-    for sound in lista:
-        channel.basic_publish(exchange='',
-                              routing_key='sound',
-                              body=sound)
-        #print(" [x] Sent 'Hello World!'")
+    channel.exchange_declare(exchange="sound_ex", exchange_type="fanout")
+
+    channel.basic_publish(exchange='sound_ex',
+                          routing_key='sound',
+                          body=request.data)
 
     connection.close()
+    return request.data, status.HTTP_201_CREATED
 
 
 if __name__ == '__main__':
