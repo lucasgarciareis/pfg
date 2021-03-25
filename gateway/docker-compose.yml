@@ -2,10 +2,10 @@ version: '3.7'
 
 services:
 
-    app:
-        container_name: app
+    prod:
+        container_name: prod
         ports:
             - 54321:5000
         build:
-            context: ./app
+            context: ./prod
         restart: unless-stopped
