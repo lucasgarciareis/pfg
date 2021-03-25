@@ -15,10 +15,15 @@ services:
         networks:
             - net2
 
-    broker:
-        container_name: broker
+    cons:
+        container_name: cons
         build:
-            context: ./broker
+            context: ./cons
         restart: unless-stopped
         networks:
             - net2   
+
+    rabbitmq:
+        image: rabbitmq
+        networks:
+            - net2

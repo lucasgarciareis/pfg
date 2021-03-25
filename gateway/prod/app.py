@@ -9,16 +9,16 @@ app = Flask(__name__)
 
 @app.route('/sound', methods=['POST'])
 def post_sound():
-    connection = pika.BlockingConnection(pika.ConnectionParameters('broker'))
+    connection = pika.BlockingConnection(pika.ConnectionParameters('rabbitmq'))
     channel = connection.channel()
 
     channel.exchange_declare(exchange="sound_ex", exchange_type="fanout")
 
     channel.basic_publish(exchange='sound_ex',
-                          routing_key='sound',
+                          routing_key='',
                           body=request.data)
 
-    connection.close()
+    channel.close()
     return request.data, status.HTTP_201_CREATED
 
 

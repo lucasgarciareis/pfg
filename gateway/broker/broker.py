@@ -7,21 +7,23 @@ url = 'http://34.95.136.144/sound'
 
 
 def main():
-    connection = pika.BlockingConnection(pika.ConnectionParameters('broker'))
+    connection = pika.BlockingConnection(pika.ConnectionParameters('rabbitmq'))
     channel = connection.channel()
 
     channel.exchange_declare(exchange="sound_ex", exchange_type="fanout")
 
-    channel.queue_declare(queue='sound')
+    result = channel.queue_declare(queue='', exclusive=True)
+
+    queue_name = result.method.queue
 
     def callback(ch, method, properties, body):
         print(" [x] Received %r" % body)
         #x = requests.post(url, data = myobj)
 
-    channel.queue_bind(exchange='sound_ex', queue='sound')
+    channel.queue_bind(exchange='sound_ex', queue=queue_name)
 
     channel.basic_consume(
-        queue='sound', on_message_callback=callback, auto_ack=True)
+        queue=queue_name, on_message_callback=callback, auto_ack=True)
 
     channel.start_consuming()
 
