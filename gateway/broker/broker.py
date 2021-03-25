@@ -7,8 +7,7 @@ url = 'http://34.95.136.144/sound'
 
 
 def main():
-    connection = pika.BlockingConnection(
-        pika.ConnectionParameters('localhost'))
+    connection = pika.BlockingConnection(pika.ConnectionParameters('broker'))
     channel = connection.channel()
 
     channel.exchange_declare(exchange="sound_ex", exchange_type="fanout")
@@ -22,7 +21,7 @@ def main():
     channel.queue_bind(exchange='sound_ex', queue='sound')
 
     channel.basic_consume(
-        queue=queue_name, on_message_callback=callback, auto_ack=True)
+        queue='sound', on_message_callback=callback, auto_ack=True)
 
     channel.start_consuming()
 
