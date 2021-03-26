@@ -2,10 +2,6 @@ import pika
 import sys
 import os
 import requests
-import json
-import ast
-
-#url = 'http://34.95.136.144/sound'
 
 
 def main():
@@ -20,9 +16,8 @@ def main():
 
     def callback(ch, method, properties, body):
         print(" [x] Received %r" % body)
-        #jdict = ast.literal_eval(body.decode())
-        #jbody = json.dumps(jdict)
-        requests.post("http://34.95.136.144:54322/sound", data=body.decode(), headers={"Content-Type":"application/json"})
+        requests.post("http://34.95.136.144:54322/sound", data=body.decode(),
+                      headers={"Content-Type": "application/json"})
 
     channel.queue_bind(exchange='sound_ex', queue=queue_name)
 
