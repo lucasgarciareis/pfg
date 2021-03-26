@@ -20,9 +20,9 @@ def main():
 
     def callback(ch, method, properties, body):
         print(" [x] Received %r" % body)
-        jdict = ast.literal_eval(body.decode())
-        jbody = json.dumps(jdict)
-        requests.post("http://34.95.136.144:54322/sound", data=jbody)
+        #jdict = ast.literal_eval(body.decode())
+        #jbody = json.dumps(jdict)
+        requests.post("http://34.95.136.144:54322/sound", data=body.decode(), headers={"Content-Type":"application/json"})
 
     channel.queue_bind(exchange='sound_ex', queue=queue_name)
 
