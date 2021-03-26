@@ -2,8 +2,10 @@ import pika
 import sys
 import os
 import requests
+import json
+import ast
 
-url = 'http://34.95.136.144/sound'
+#url = 'http://34.95.136.144/sound'
 
 
 def main():
@@ -18,7 +20,9 @@ def main():
 
     def callback(ch, method, properties, body):
         print(" [x] Received %r" % body)
-        #x = requests.post(url, data = myobj)
+        jdict = ast.literal_eval(body.decode())
+	jbody = json.dumps(jdict)
+	requests.post("http://34.95.136.144:54322/sound", data=jbody)
 
     channel.queue_bind(exchange='sound_ex', queue=queue_name)
 
@@ -26,7 +30,7 @@ def main():
         queue=queue_name, on_message_callback=callback, auto_ack=True)
 
     channel.start_consuming()
-
+    print("Program Started. Consuming...")
 
 if __name__ == '__main__':
     try:

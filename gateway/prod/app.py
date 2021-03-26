@@ -1,6 +1,7 @@
 import os
 import pika
 from flask import Flask, jsonify, request
+from flask_api import FlaskAPI, status
 
 app = Flask(__name__)
 
@@ -17,10 +18,12 @@ def post_sound():
     channel.basic_publish(exchange='sound_ex',
                           routing_key='',
                           body=request.data)
-
+    
     channel.close()
     return request.data, status.HTTP_201_CREATED
-
+@app.route('/test', methods=['GET'])
+def get_test():
+	return status.HTTP_200_OK
 
 if __name__ == '__main__':
     # define the localhost ip and the port that is going to be used
