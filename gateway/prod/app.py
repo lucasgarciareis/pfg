@@ -13,17 +13,30 @@ def post_sound():
     connection = pika.BlockingConnection(pika.ConnectionParameters('rabbitmq'))
     channel = connection.channel()
 
-    channel.exchange_declare(exchange="sound_ex", exchange_type="fanout")
+    channel.exchange_declare(exchange="main_ex", exchange_type="direct")
 
-    channel.basic_publish(exchange='sound_ex',
-                          routing_key='',
+    channel.basic_publish(exchange='main_ex',
+                          routing_key='sound',
                           body=request.data)
-    
+
     channel.close()
     return request.data, status.HTTP_201_CREATED
-@app.route('/test', methods=['GET'])
-def get_test():
-	return status.HTTP_200_OK
+
+
+@app.route('/xdk', methods=['POST'])
+def post_xdk():
+    connection = pika.BlockingConnection(pika.ConnectionParameters('rabbitmq'))
+    channel = connection.channel()
+
+    channel.exchange_declare(exchange="main_ex", exchange_type="direct")
+
+    channel.basic_publish(exchange='main_ex',
+                          routing_key='xdk',
+                          body=request.data)
+
+    channel.close()
+    return request.data, status.HTTP_201_CREATED
+
 
 if __name__ == '__main__':
     # define the localhost ip and the port that is going to be used
