@@ -6,7 +6,8 @@
 
 const char *ssid = "Lucas_2G";
 const char *password = "lucas230992";
-const int pinoSensor = 16; //PINO DIGITAL UTILIZADO PELO SENSOR
+const char *serverName = "http://192.168.1.7:54322/vibration"; // "http://httpbin.org/post"
+const int pinoSensor = 16;
 const int pinoLed = 17;
 int ok = 0;
 int pirValue;
@@ -33,15 +34,15 @@ void loop()
     if (pirValue == HIGH)
     {
         ok = 1;
-        digitalWrite(pinoLed, HIGH); // turn the LED on (HIGH is the voltage level)
+        digitalWrite(pinoLed, HIGH);
     }
     else
     {
         ok = 0;
-        digitalWrite(pinoLed, LOW); // turn the LED off by making the voltage LOW
+        digitalWrite(pinoLed, LOW);
     }
     postDataToServer();
-    delay(1000);
+    delay(500);
 }
 
 void postDataToServer()
@@ -49,8 +50,8 @@ void postDataToServer()
 
     HTTPClient http;
 
-    http.begin("http://192.168.1.7:54322/vibration");
-    //http.begin("http://httpbin.org/post");
+    http.begin(serverName);
+
     http.addHeader("Content-Type", "application/json");
 
     StaticJsonDocument<200> doc;

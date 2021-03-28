@@ -4,23 +4,9 @@ from time import time
 
 db = SQLAlchemy()
 
-
 def configure(app):
     db.init_app(app)
     app.db = db
-
-
-# Class Sound
-class Sound(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    sound = db.Column(db.Float)
-    date = db.Column(db.Numeric(precision=17, scale=7,
-                                asdecimal=False))
-
-    def __init__(self, sound, date):
-        self.sound = sound
-        self.date = date
-
 
 # Class temperature
 class Temperature(db.Model):
@@ -58,6 +44,35 @@ class Light(db.Model):
         self.light = light
         self.date = date
 
+# Class Sound
+class Sound(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    sound = db.Column(db.Float)
+    date = db.Column(db.Numeric(precision=17, scale=7, asdecimal=False))
+
+    def __init__(self, sound, date):
+        self.sound = sound
+        self.date = date
+
+# Class movement
+class Movement(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    movement = db.Column(db.Boolean)
+    date = db.Column(db.Numeric(precision=17, scale=7, asdecimal=False))
+
+    def __init__(self, movement, date):
+        self.movement = movement
+        self.date = date
+
+# Class pressure
+class Pressure(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    pressure = db.Column(db.Float)
+    date = db.Column(db.Numeric(precision=17, scale=7, asdecimal=False))
+
+    def __init__(self, pressure, date):
+        self.pressure = pressure
+        self.date = date
 
 # Class vibration
 class Vibration(db.Model):

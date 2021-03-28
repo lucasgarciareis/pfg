@@ -10,12 +10,12 @@ def create_app():
     basedir = os.path.abspath(os.path.dirname(__file__))
 
     #sqlite - local
-    # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + \
-    #    os.path.join(basedir, 'crud.db')
+    #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + \
+    #   os.path.join(basedir, 'crud.db')
 
     #MySQL - local
-    # app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://<mysql_username>:<mysql_password>@<mysql_host>:<mysql_port>/<mysql_db>'
-    # app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://projetofinal:password@localhost:3306/crud'
+    #app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://<mysql_username>:<mysql_password>@<mysql_host>:<mysql_port>/<mysql_db>'
+    #app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://projetofinal:password@localhost:3306/crud'
 
     #MySQL - Docker
     app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://projetofinal:password@mysql/crud'
@@ -32,6 +32,9 @@ def create_app():
 
     from .xdk import bp_xdk
     app.register_blueprint(bp_xdk)
+
+    from .esp32 import bp_esp32
+    app.register_blueprint(bp_esp32)
 
     from .vibration import bp_vibration
     app.register_blueprint(bp_vibration)

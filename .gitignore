@@ -6,7 +6,7 @@ cmds.txt
 teste.py
 LICENSE
 README.md
-/app/crud.db
+/app/app/crud.db
 /dbdata
 /install
 /grafana-data
