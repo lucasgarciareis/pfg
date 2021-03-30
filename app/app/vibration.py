@@ -10,7 +10,7 @@ bp_vibration = Blueprint('vibration', __name__)
 @bp_vibration.route('/vibration', methods=['GET'])
 def getvibr():
     ss = VibrationSchema(many=True)
-    result = Vibration.query.all()
+    result = Vibration.query.order_by(Vibration.id.desc().limit(120)
     return ss.jsonify(result), 200
 
 
