@@ -11,7 +11,7 @@ bp_sound = Blueprint('sound', __name__)
 @bp_sound.route('/sound', methods=['GET'])
 def getsound():
     ss = SoundSchema(many=True)
-    result = Sound.query.all()
+    result = Sound.query.order_by(Sound.id.desc()).limit(120)
     return ss.jsonify(result), 200
 
 

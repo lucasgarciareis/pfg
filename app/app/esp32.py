@@ -6,11 +6,6 @@ from datetime import datetime, timedelta
 
 bp_esp32 = Blueprint('esp32', __name__)
 
-@bp_esp32.route('/sound', methods=['GET'])
-def getsound():
-    ss = SoundSchema(many=True)
-    result = Sound.query.all()
-    return ss.jsonify(result), 200
 
 @bp_esp32.route('/movement', methods=['GET'])
 def getmovement():
