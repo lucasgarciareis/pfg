@@ -34,4 +34,4 @@ while 1:
                 cry = 1
                 break
     print("--- %s seconds ---" % (time.time() - start_time))
-    time.sleep(2)
+    time.sleep(1.98)
