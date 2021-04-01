@@ -29,7 +29,7 @@ while 1:
         for row in list_mov:
             if(row['movement'] == 1):
                 print("choro detectado")
-		cry = 1
+                cry = 1
                 break
 
     sleep(2)
