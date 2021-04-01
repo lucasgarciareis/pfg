@@ -13,6 +13,13 @@ def getlight():
     return ss.jsonify(result), 200
 
 
+@bp_xdk.route('/light/now', methods=['GET'])
+def getlastlight():
+    ss = LightSchema(many=True)
+    result = Light.query.order_by(Light.id.desc()).first()
+    return ss.jsonify(result), 200
+
+
 @bp_xdk.route('/humidity', methods=['GET'])
 def gethumd():
     ss = HumiditySchema(many=True)
@@ -20,10 +27,24 @@ def gethumd():
     return ss.jsonify(result), 200
 
 
+@bp_xdk.route('/humidity/now', methods=['GET'])
+def getlasthumd():
+    ss = HumiditySchema(many=True)
+    result = Humidity.query.order_by(Humidity.id.desc()).first()
+    return ss.jsonify(result), 200
+
+
 @bp_xdk.route('/temperature', methods=['GET'])
 def gettemp():
     ss = TemperatureSchema(many=True)
     result = Temperature.query.order_by(Temperature.id.desc()).limit(20)
+    return ss.jsonify(result), 200
+
+
+@bp_xdk.route('/temperature/now', methods=['GET'])
+def getlasttemp():
+    ss = TemperatureSchema(many=True)
+    result = Temperature.query.order_by(Temperature.id.desc()).first()
     return ss.jsonify(result), 200
 
 
