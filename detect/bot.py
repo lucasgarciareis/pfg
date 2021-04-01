@@ -15,9 +15,12 @@ def send_start_message(message):
 
 @bot.message_handler(commands=['environment', 'env'])
 def send_environment_message(message):
-    rs = requests.get(url="http://192.168.1.7:54322/temperature/now")
-    bot.reply_to(message, "A última medição de temperatura retornou {0}°C".format(
-        rs['temperature']))
+    rt = requests.get(url="http://192.168.1.7:54322/temperature/now")
+    rh = requests.get(url="http://192.168.1.7:54322/humidity/now")
+    rl = requests.get(url="http://192.168.1.7:54322/light/now")
+
+    bot.reply_to(message, "Temperatura atual: {0}°C\nHumidade atual: {1}%\nLuminosidade atual: {2} mlx".format(
+        rt['temperature'], rh['humidity'], rl['light']))
 
 
 bot.polling()
