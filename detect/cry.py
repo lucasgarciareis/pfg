@@ -1,6 +1,6 @@
 import requests
 import json
-from time import sleep
+import time
 
 threshold = 460  # minimum value for crying detection
 count = 0  # amount of instances where threshold was surpassed
@@ -8,7 +8,9 @@ max = 3  # maximum amount of  instances of threshold surpassed
 noise = 0  # flag for noise
 cry = 0  # flag for crying when there's noise AND movement
 
+
 while 1:
+    start_time = time.time()
     rs = requests.get(url="http://192.168.0.17:54322/sound")
     list_sound = rs.json()
 
@@ -31,5 +33,5 @@ while 1:
                 print("choro detectado")
                 cry = 1
                 break
-
-    sleep(2)
+    print("--- %s seconds ---" % (time.time() - start_time))
+    time.sleep(2)
