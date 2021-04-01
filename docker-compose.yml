@@ -47,5 +47,21 @@ services:
         volumes:
             - ./grafana-data:/var/lib/grafana
 
+    detect:
+        container_name: detect
+        build:
+            context: ./detect
+        restart: unless-stopped
+        networks:
+            - net1
+        links:
+            - mysql
+            - app
+        volumes:
+            - ./detect:/pfg
+        depends_on:
+            - mysql
+            - app
+
 volumes:
     dbdata:

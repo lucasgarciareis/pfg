@@ -7,16 +7,31 @@ from datetime import datetime, timedelta
 bp_esp32 = Blueprint('esp32', __name__)
 
 
+@bp_esp32.route('/sound', methods=['GET'])
+def getsound():
+    ss = SoundSchema(many=True)
+    result = Sound.query.order_by(Sound.id.desc()).limit(120)
+    return ss.jsonify(result), 200
+
+
 @bp_esp32.route('/movement', methods=['GET'])
 def getmovement():
     ms = MovementSchema(many=True)
-    result = Movement.query.all()
+    result = Movement.query.order_by(Movement.id.desc()).limit(120)
     return ms.jsonify(result), 200
+
+
+@bp_esp32.route('/movement/still', methods=['GET'])
+def getmovement():
+    ms = MovementSchema(many=True)
+    result = Movement.query.order_by(Movement.id.desc()).limit(1800)
+    return ms.jsonify(result), 200
+
 
 @bp_esp32.route('/pressure', methods=['GET'])
 def getpressure():
     ps = PressureSchema(many=True)
-    result = Pressure.query.all()
+    result = Pressure.query.order_by(Pressure.id.desc()).limit(180)
     return ps.jsonify(result), 200
 
 
@@ -41,6 +56,6 @@ def postesp32():
         current_app.db.session.add(new_sound)
         current_app.db.session.add(new_movem)
         current_app.db.session.add(new_press)
-    
+
     current_app.db.session.commit()
     return jsonify(data), 201
