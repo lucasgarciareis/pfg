@@ -42,7 +42,7 @@ while 1:
         # codigo de alerta
 
     # humidity
-    rh = requests.get(url="http://192.168.1.7:54322/temperature")
+    rh = requests.get(url="http://192.168.1.7:54322/humidity")
     list_humid = rh.json()
 
     for row in list_humid:
