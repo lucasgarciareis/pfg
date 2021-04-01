@@ -16,7 +16,7 @@ while 1:
         if(row['pressure'] < threshold):
             count += 1
         else:
-            if(apnea=1):
+            if(apnea==1):
                 print("respiração detectada novamente.")
                 apnea = 0
             count = 0
