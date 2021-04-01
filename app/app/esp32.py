@@ -22,7 +22,7 @@ def getmovement():
 
 
 @bp_esp32.route('/movement/still', methods=['GET'])
-def getmovement():
+def getstill():
     ms = MovementSchema(many=True)
     result = Movement.query.order_by(Movement.id.desc()).limit(1800)
     return ms.jsonify(result), 200
