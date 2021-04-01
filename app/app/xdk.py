@@ -9,21 +9,21 @@ bp_xdk = Blueprint('xdk', __name__)
 @bp_xdk.route('/light', methods=['GET'])
 def getlight():
     ss = LightSchema(many=True)
-    result = Light.query.all()
+    result = Light.query.order_by(Light.id.desc()).limit(20)
     return ss.jsonify(result), 200
 
 
 @bp_xdk.route('/humidity', methods=['GET'])
 def gethumd():
     ss = HumiditySchema(many=True)
-    result = Temperature.query.all()
+    result = Humidity.query.order_by(Humidity.id.desc()).limit(20)
     return ss.jsonify(result), 200
 
 
 @bp_xdk.route('/temperature', methods=['GET'])
 def gettemp():
     ss = TemperatureSchema(many=True)
-    result = Temperature.query.all()
+    result = Temperature.query.order_by(Temperature.id.desc()).limit(20)
     return ss.jsonify(result), 200
 
 

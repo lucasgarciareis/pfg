@@ -10,7 +10,7 @@ cry = 0  # flag for crying when there's noise AND movement
 
 
 while 1:
-    start_time = time.time()
+    #start_time = time.time()
     rs = requests.get(url="http://192.168.0.17:54322/sound")
     list_sound = rs.json()
 
@@ -33,5 +33,5 @@ while 1:
                 print("choro detectado")
                 cry = 1
                 break
-    print("--- %s seconds ---" % (time.time() - start_time))
+    #print("--- %s seconds ---" % (time.time() - start_time))
     time.sleep(1.98)
