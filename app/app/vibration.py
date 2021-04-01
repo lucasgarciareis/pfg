@@ -15,7 +15,7 @@ def getvibr():
 
 
 @bp_vibration.route('/vibration/inactivity', methods=['GET'])
-def getvibr():
+def getinactivity():
     ss = VibrationSchema(many=True)
     result = Vibration.query.order_by(Vibration.id.desc()).limit(1800)
     return ss.jsonify(result), 200
