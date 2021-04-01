@@ -11,7 +11,7 @@ cry = 0  # flag for crying when there's noise AND movement
 
 while 1:
     #start_time = time.time()
-    rs = requests.get(url="http://192.168.0.17:54322/sound")
+    rs = requests.get(url="http://192.168.1.7:54322/sound")
     list_sound = rs.json()
 
     for row in list_sound:
@@ -26,7 +26,7 @@ while 1:
         print("pontos acima do threshold = {0}".format(count))
         noise = 0
         count = 0
-        rm = requests.get(url="http://192.168.0.17:54322/movement")
+        rm = requests.get(url="http://192.168.1.7:54322/movement")
         list_mov = rm.json()
         for row in list_mov:
             if(row['movement'] == 1):

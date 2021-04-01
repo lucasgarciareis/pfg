@@ -8,7 +8,7 @@ count = 0
 
 while 1:
     #start_time = time.time()
-    rm = requests.get(url="http://192.168.0.17:54322/movement/still")
+    rm = requests.get(url="http://192.168.1.7:54322/movement/still")
     list_mov = rm.json()
 
     for row in list_mov:

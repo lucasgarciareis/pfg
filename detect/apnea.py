@@ -9,7 +9,7 @@ apnea = 0  # flag for apnea
 
 while 1:
     start_time = time.time()
-    rp = requests.get(url="http://192.168.0.17:54322/pressure")
+    rp = requests.get(url="http://192.168.1.7:54322/pressure")
     list_press = rp.json()
 
     for row in list_press:
