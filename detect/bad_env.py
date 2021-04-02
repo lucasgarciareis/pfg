@@ -4,7 +4,7 @@ import time
 from bot import high_temp_alert, low_temp_alert, low_humidity_alert, high_luminosity_alert, ip_addr, port_num
 
 # temperature
-upper_temp_threshold = 25000
+upper_temp_threshold = 25999
 lower_temp_threshold = 20000
 count_high_temp = 0  # amount of instances where threshold was surpassed
 count_low_temp = 0
