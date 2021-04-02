@@ -14,7 +14,7 @@ while 1:
     list_mov = rm.json()
 
     for row in list_mov:
-        if(row['movement'] == 1):
+        if(row['movement']):
             still = 0
             count = 0
         else:
