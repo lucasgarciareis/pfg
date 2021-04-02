@@ -4,8 +4,8 @@ import time
 from bot import high_temp_alert, low_temp_alert, low_humidity_alert, high_luminosity_alert, ip_addr, port_num
 
 # temperature
-upper_temp_threshold = 25
-lower_temp_threshold = 20
+upper_temp_threshold = 25000
+lower_temp_threshold = 20000
 count_high_temp = 0  # amount of instances where threshold was surpassed
 count_low_temp = 0
 max_temp = 20  # maximum amount of  instances of threshold surpassed
@@ -45,7 +45,7 @@ while 1:
         high_temp_alert()
         high_temp = 1
 
-    if(count_low_temp <= max_temp):
+    if(count_low_temp >= max_temp):
         print("temperatura do quarto abaixo do recomendado")
         low_temp_alert()
         low_temp = 1
