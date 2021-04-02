@@ -1,6 +1,7 @@
 import requests
 import json
 import time
+from bot import apnea_alert, apnea_critical_alert
 
 threshold = 13  # minimum value for apnea detection
 count = 0  # amount of instances where threshold was surpassed
@@ -16,16 +17,20 @@ while 1:
         if(row['pressure'] < threshold):
             count += 1
         else:
-            if(apnea==1):
+            if(apnea == 1):
                 print("respiração detectada novamente.")
                 apnea = 0
             count = 0
 
         if(count >= max):
             apnea = 1
+            if(count == max):
+                print("Apneia detectada. Sem dados respiratorios por 3 segundos")
+                apnea_alert()
+            elif(count >= 2*max):
+                print("Apneia prolongada por mais de 6 segundos! Verifique o bebê!")
+                apnea_critical_alert()
+                time.sleep(60)
 
-    if(apnea == 1):
-        print("apneia detectada. Sem dados respiratorios por 3 segundos")
-        # codigo de alerta
-    print("--- %s seconds ---" % (time.time() - start_time))
+    #print("--- %s seconds ---" % (time.time() - start_time))
     time.sleep(2.98)

@@ -1,6 +1,7 @@
 import requests
 import json
 import time
+from bot import still_alert, still_critical_alert
 
 still = 0
 count = 0
@@ -18,10 +19,14 @@ while 1:
         else:
             count += 1
 
-    if(count >= 1800):
+    if(count == 1800):
         still = 1
         print("sem movimentos detectados em 30 segundos")
-        # codigo de alerta
+        still_alert()
+    elif(count >= 3600):
+        print("sem movimentos detectados há mais de 1 minuto!")
+        still_critical_alert()
+        time.sleep(50)
     #print("still: {0}".format(count))
 
     #print("--- %s seconds ---" % (time.time() - start_time))

@@ -1,7 +1,7 @@
 import requests
 import json
 import time
-from bot import crying
+from bot import cry_alert
 
 threshold = 460  # minimum value for crying detection
 count = 0  # amount of instances where threshold was surpassed
@@ -32,7 +32,7 @@ while 1:
         for row in list_mov:
             if(row['movement'] == 1):
                 print("choro detectado")
-                crying()
+                cry_alert()
                 cry = 1
                 break
     #print("--- %s seconds ---" % (time.time() - start_time))
