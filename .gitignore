@@ -2,6 +2,8 @@
 /.vscode
 /migrations
 /app/__pycache__
+/app/app/__pycache__
+/detect/__pycache__
 cmds.txt
 teste.py
 LICENSE
@@ -10,4 +12,3 @@ README.md
 /dbdata
 /install
 /grafana-data
-/app/app/__pycache__
