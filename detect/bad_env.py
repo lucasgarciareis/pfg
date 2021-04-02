@@ -27,7 +27,8 @@ high_light = 0
 while 1:
     #start_time = time.time()
     # temperature
-    rt = requests.get(url="http://192.168.1.7:54322/temperature")
+    rt = requests.get(
+        url="http://{0}:{1}/temperature".format(ip_addr, port_num))
     list_temp = rt.json()
 
     for row in list_temp:
@@ -50,7 +51,7 @@ while 1:
         low_temp = 1
 
     # humidity
-    rh = requests.get(url="http://192.168.1.7:54322/humidity")
+    rh = requests.get(url="http://{0}:{1}/humidity".format(ip_addr, port_num))
     list_humid = rh.json()
 
     for row in list_humid:
@@ -66,7 +67,7 @@ while 1:
         # codigo de alerta
 
     # lighting
-    rl = requests.get(url="http://192.168.1.7:54322/light")
+    rl = requests.get(url="http://{0}:{1}/light".format(ip_addr, port_num))
     list_light = rl.json()
 
     for row in list_light:

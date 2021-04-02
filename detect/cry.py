@@ -1,7 +1,7 @@
 import requests
 import json
 import time
-from bot import cry_alert
+from bot import cry_alert, ip_addr, port_num
 
 threshold = 460  # minimum value for crying detection
 count = 0  # amount of instances where threshold was surpassed
@@ -12,7 +12,7 @@ cry = 0  # flag for crying when there's noise AND movement
 
 while 1:
     #start_time = time.time()
-    rs = requests.get(url="http://192.168.1.7:54322/sound")
+    rs = requests.get(url="http://{0}:{1}/sound".format(ip_addr, port_num))
     list_sound = rs.json()
 
     for row in list_sound:
@@ -27,7 +27,8 @@ while 1:
         print("pontos acima do threshold = {0}".format(count))
         noise = 0
         count = 0
-        rm = requests.get(url="http://192.168.1.7:54322/movement")
+        rm = requests.get(
+            url="http://{0}:{1}/movement".format(ip_addr, port_num))
         list_mov = rm.json()
         for row in list_mov:
             if(row['movement'] == 1):
