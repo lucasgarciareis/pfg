@@ -34,6 +34,7 @@ while 1:
             if(row['movement'] == 1):
                 print("choro detectado")
                 cry_alert()
+                time.sleep(30)
                 cry = 1
                 break
     #print("--- %s seconds ---" % (time.time() - start_time))
