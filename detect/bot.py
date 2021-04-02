@@ -6,7 +6,8 @@ import requests
 
 bot = telebot.TeleBot("1727576179:AAE6t-psMqxv3uNd9_yP62JbG-qLWCykKpg")
 chat_id = -555998562
-ip_addr = "192.168.0.17"
+#ip_addr = "192.168.0.17"
+ip_addr = "192.168.1.7"
 port_num = 54322
 
 
@@ -29,7 +30,7 @@ def send_environment_message(message):
     rl_data = rl.json()
 
     msg = "Temperatura atual: {0} °C\nHumidade atual: {1}%\nLuminosidade atual: {2} mlx".format(
-        rt_data[0]['temperature'], rh_data[0]['humidity'], rl_data[0]['light'])
+        round(rt_data[0]['temperature']/1000,1), rh_data[0]['humidity'], rl_data[0]['light'])
 
     bot.reply_to(message, msg)
 
