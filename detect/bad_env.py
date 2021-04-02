@@ -1,7 +1,7 @@
 import requests
 import json
 import time
-from bot import high_temp_alert, low_temp_alert, low_humidity_alert, high_luminosity_alert
+from bot import high_temp_alert, low_temp_alert, low_humidity_alert, high_luminosity_alert, ip_addr, port_num
 
 # temperature
 upper_temp_threshold = 25

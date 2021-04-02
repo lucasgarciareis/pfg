@@ -1,7 +1,7 @@
 import requests
 import json
 import time
-from bot import still_alert, still_critical_alert
+from bot import still_alert, still_critical_alert, ip_addr, port_num
 
 still = 0
 count = 0
