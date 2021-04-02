@@ -29,7 +29,7 @@ def send_environment_message(message):
     rl_data = rl.json()
 
     msg = "Temperatura atual: {0} °C\nHumidade atual: {1}%\nLuminosidade atual: {2} mlx".format(
-        rt_data[0]['temperature'], rh_data[0]['humidity'], rl_data[0]['light'])
+        round(rt_data[0]['temperature']/1000,1), rh_data[0]['humidity'], rl_data[0]['light'])
 
     bot.reply_to(message, msg)
 
