@@ -19,7 +19,7 @@ max_humid = 20
 low_humid = 0
 
 # lighting
-light_threshold = 500
+light_threshold = 10000
 count_light = 0
 max_light = 10
 high_light = 0

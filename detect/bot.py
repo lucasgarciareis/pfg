@@ -30,7 +30,7 @@ def send_environment_message(message):
     rl_data = rl.json()
 
     msg = "Temperatura atual: {0} °C\nHumidade atual: {1}%\nLuminosidade atual: {2} mlx".format(
-        round(rt_data[0]['temperature']/1000,1), rh_data[0]['humidity'], rl_data[0]['light'])
+        round(rt_data[0]['temperature']/1000, 1), rh_data[0]['humidity'], rl_data[0]['light'])
 
     bot.reply_to(message, msg)
 
@@ -41,12 +41,12 @@ def cry_alert():
 
 def still_alert():
     bot.send_message(
-        chat_id, "Sem movimentos detectados nos últimos 30 segundos. Verifique o bebê.")
+        chat_id, "Sem movimentos detectados nos últimos 5 minutos. Verifique o bebê.")
 
 
 def still_critical_alert():
     bot.send_message(
-        chat_id, "Sem movimentos detectados há mais de 1 minuto! Verifique o bebê!")
+        chat_id, "Sem movimentos detectados há mais de 20 minutos! Verifique o bebê!")
 
 
 def apnea_alert():
