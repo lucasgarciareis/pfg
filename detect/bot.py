@@ -14,7 +14,7 @@ port_num = 54322
 @bot.message_handler(commands=['start', 'help'])
 def send_start_message(message):
     #    bot.send_message(-555998562,"PFG atrasado !")
-    bot.reply_to(message, "Olá, eu sou o Bot monitor de bebê. Caguei aqui!")
+    bot.reply_to(message, "Olá, eu sou o Bot monitor de bebê.")
 
 
 @bot.message_handler(commands=['environment', 'env'])
