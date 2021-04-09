@@ -4,7 +4,7 @@ import os
 import requests
 
 ip_addr = "35.199.72.74"
-port_num = "54322"
+port_num = 54322
 
 
 def main():
@@ -13,20 +13,20 @@ def main():
 
     channel.exchange_declare(exchange="main_ex", exchange_type="direct")
 
-    result = channel.queue_declare(queue='sound', exclusive=True)
+    result = channel.queue_declare(queue='esp32', exclusive=True)
 
     queue_name = result.method.queue
 
-    def callback_sound(ch, method, properties, body):
+    def callback_esp32(ch, method, properties, body):
         print(" [x] Received %r" % body)
-        requests.post("http://{0}:{1}/sound".format(ip_addr, port_num), data=body.decode(),
+        requests.post("http://{0}:{1}/esp32".format(ip_addr, port_num), data=body.decode(),
                       headers={"Content-Type": "application/json"})
 
     channel.queue_bind(exchange='main_ex', queue=queue_name,
-                       routing_key='sound')
+                       routing_key='esp32')
 
     channel.basic_consume(
-        queue=queue_name, on_message_callback=callback_sound, auto_ack=True)
+        queue=queue_name, on_message_callback=callback_esp32, auto_ack=True)
 
     result2 = channel.queue_declare(queue='xdk', exclusive=True)
 

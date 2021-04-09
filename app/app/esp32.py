@@ -44,10 +44,10 @@ def postesp32():
     lista_m = request.json['movement']
     lista_p = request.json['pressure']
 
-    received_time = time() - 1.3
+    received_time = time() - 1.0166666
 
     for sound, movem, press in zip(lista_s, lista_m, lista_p):
-        received_time = received_time + 0.02
+        received_time = received_time + 0.0166666
         # print(str(received_time) + ' : ' +
         #      datetime.fromtimestamp(received_time).strftime('%Y-%m-%d %H:%M:%S.%f'))
         new_sound = Sound(sound, received_time)
