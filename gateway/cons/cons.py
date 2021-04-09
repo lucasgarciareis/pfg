@@ -3,6 +3,9 @@ import sys
 import os
 import requests
 
+ip_addr = "35.199.72.74"
+port_num = "54322"
+
 
 def main():
     connection = pika.BlockingConnection(pika.ConnectionParameters('rabbitmq'))
@@ -16,7 +19,7 @@ def main():
 
     def callback_sound(ch, method, properties, body):
         print(" [x] Received %r" % body)
-        requests.post("http://34.95.136.144:54322/sound", data=body.decode(),
+        requests.post("http://{0}:{1}/sound".format(ip_addr, port_num), data=body.decode(),
                       headers={"Content-Type": "application/json"})
 
     channel.queue_bind(exchange='main_ex', queue=queue_name,
@@ -31,7 +34,7 @@ def main():
 
     def callback_xdk(ch, method, properties, body):
         print(" [x] Received %r" % body)
-        requests.post("http://34.95.136.144:54322/xdk", data=body.decode(),
+        requests.post("http://{0}:{1}/xdk".format(ip_addr, port_num), data=body.decode(),
                       headers={"Content-Type": "application/json"})
 
     channel.queue_bind(exchange='main_ex',
