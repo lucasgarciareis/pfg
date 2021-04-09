@@ -10,28 +10,28 @@ bp_esp32 = Blueprint('esp32', __name__)
 @bp_esp32.route('/sound', methods=['GET'])
 def getsound():
     ss = SoundSchema(many=True)
-    result = Sound.query.order_by(Sound.id.desc()).limit(120)
+    result = Sound.query.order_by(Sound.id.desc()).limit(100)
     return ss.jsonify(result), 200
 
 
 @bp_esp32.route('/movement', methods=['GET'])
 def getmovement():
     ms = MovementSchema(many=True)
-    result = Movement.query.order_by(Movement.id.desc()).limit(120)
+    result = Movement.query.order_by(Movement.id.desc()).limit(100)
     return ms.jsonify(result), 200
 
 
 @bp_esp32.route('/movement/still', methods=['GET'])
 def getstill():
     ms = MovementSchema(many=True)
-    result = Movement.query.order_by(Movement.id.desc()).limit(600)
+    result = Movement.query.order_by(Movement.id.desc()).limit(500)
     return ms.jsonify(result), 200
 
 
 @bp_esp32.route('/pressure', methods=['GET'])
 def getpressure():
     ps = PressureSchema(many=True)
-    result = Pressure.query.order_by(Pressure.id.desc()).limit(180)
+    result = Pressure.query.order_by(Pressure.id.desc()).limit(150)
     return ps.jsonify(result), 200
 
 
@@ -44,10 +44,10 @@ def postesp32():
     lista_m = request.json['movement']
     lista_p = request.json['pressure']
 
-    received_time = time() - 1.0166666
+    received_time = time() - 1.02
 
     for sound, movem, press in zip(lista_s, lista_m, lista_p):
-        received_time = received_time + 0.0166666
+        received_time = received_time + 0.02
         # print(str(received_time) + ' : ' +
         #      datetime.fromtimestamp(received_time).strftime('%Y-%m-%d %H:%M:%S.%f'))
         new_sound = Sound(sound, received_time)
