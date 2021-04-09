@@ -7,7 +7,7 @@ import requests
 bot = telebot.TeleBot("1727576179:AAE6t-psMqxv3uNd9_yP62JbG-qLWCykKpg")
 chat_id = -555998562
 #ip_addr = "192.168.0.17"
-ip_addr = "192.168.1.7"
+ip_addr = "35.199.72.74"
 port_num = 54322
 
 
