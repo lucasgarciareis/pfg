@@ -8,7 +8,7 @@ app = Flask(__name__)
 # we define the route /
 
 
-@app.route('/sound', methods=['POST'])
+@app.route('/esp32', methods=['POST'])
 def post_sound():
     connection = pika.BlockingConnection(pika.ConnectionParameters('rabbitmq'))
     channel = connection.channel()
@@ -16,7 +16,7 @@ def post_sound():
     channel.exchange_declare(exchange="main_ex", exchange_type="direct")
 
     channel.basic_publish(exchange='main_ex',
-                          routing_key='sound',
+                          routing_key='esp32',
                           body=request.data)
 
     channel.close()

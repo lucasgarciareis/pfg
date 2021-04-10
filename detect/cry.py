@@ -3,7 +3,7 @@ import json
 import time
 from bot import cry_alert, ip_addr, port_num
 
-threshold = 460  # minimum value for crying detection
+threshold = 1600  # minimum value for crying detection
 count = 0  # amount of instances where threshold was surpassed
 max = 3  # maximum amount of  instances of threshold surpassed
 noise = 0  # flag for noise

@@ -5,7 +5,7 @@ from bot import apnea_alert, apnea_critical_alert, ip_addr, port_num
 
 threshold = 13  # minimum value for apnea detection
 count = 0  # amount of instances where threshold was surpassed
-max = 180  # maximum amount of instances where value surpassed the threshold
+max = 150  # maximum amount of instances where value surpassed the threshold
 apnea = 0  # flag for apnea
 
 while 1:

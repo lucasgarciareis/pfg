@@ -20,11 +20,11 @@ while 1:
         else:
             count += 1
 
-    if(count == 18000):
+    if(count == 15000):
         still = 1
         print("sem movimentos detectados em 5 minutos")
         still_alert()
-    elif(count >= 72000):
+    elif(count >= 60000):
         print("sem movimentos detectados há mais de 20 minutos!")
         still_critical_alert()
         time.sleep(50)

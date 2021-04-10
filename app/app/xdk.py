@@ -59,6 +59,8 @@ def posttemp():
 
     received_time = time()
 
+
+
     new_temp = Temperature(temp, received_time)
     new_humd = Humidity(humd, received_time)
     new_light = Light(light, received_time)
