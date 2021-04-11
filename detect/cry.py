@@ -2,6 +2,7 @@ import requests
 import json
 import time
 from bot import cry_alert, ip_addr, port_num
+import datetime
 
 threshold = 1600  # minimum value for crying detection
 count = 0  # amount of instances where threshold was surpassed
@@ -33,7 +34,10 @@ while 1:
         for row in list_mov:
             if(row['movement'] == 1):
                 print("choro detectado")
-                cry_alert()
+                msg = cry_alert()
+                formatted_date = datetime.datetime.fromtimestamp(
+                    msg.date-10800).strftime('%c')
+                print("tempo de detecção: {0}".format(formatted_date))
                 time.sleep(30)
                 cry = 1
                 break
