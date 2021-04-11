@@ -2,6 +2,7 @@ import requests
 import json
 import time
 from bot import still_alert, still_critical_alert, ip_addr, port_num
+import datetime
 
 still = 0
 count = 0
@@ -23,10 +24,16 @@ while 1:
     if(count == 15000):
         still = 1
         print("sem movimentos detectados em 5 minutos")
-        still_alert()
+        msg = still_alert()
+        formatted_date = datetime.datetime.fromtimestamp(
+            msg.date-10800).strftime('%c')
+        print("tempo de detecção: {0}".format(formatted_date))
     elif(count >= 60000):
         print("sem movimentos detectados há mais de 20 minutos!")
-        still_critical_alert()
+        msg = still_critical_alert()
+        formatted_date = datetime.datetime.fromtimestamp(
+            msg.date-10800).strftime('%c')
+        print("tempo de detecção: {0}".format(formatted_date))
         time.sleep(50)
     #print("still: {0}".format(count))
 
