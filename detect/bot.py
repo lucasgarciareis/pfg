@@ -90,4 +90,16 @@ def high_luminosity_alert():
     return message
 
 
+def agitation_alert():
+    message = bot.send_message(
+        chat_id, "Agitação detectada. Movimentos prolongados por pelo menos 5 segundos. - {0}".format(time.ctime(time.time())))
+    return message
+
+
+def agitation_critical_alert():
+    message = bot.send_message(
+        chat_id, "Movimentação excessiva por mais de 10 segundos. - {0}".format(time.ctime(time.time())))
+    return message
+
+
 bot.polling()
