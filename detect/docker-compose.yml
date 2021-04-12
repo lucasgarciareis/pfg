@@ -24,7 +24,7 @@ services:
     cry:
         container_name: cry
         build:
-        context: ./cry
+            context: ./cry
         restart: unless-stopped
         networks:
             - net3
@@ -32,7 +32,7 @@ services:
     still:
         container_name: still
         build:
-        context: ./still
+            context: ./still
         restart: unless-stopped
         networks:
             - net3
@@ -40,7 +40,7 @@ services:
     bot:
         container_name: bot
         build:
-        context: ./bot
+            context: ./bot
         restart: unless-stopped
         networks:
             - net3
