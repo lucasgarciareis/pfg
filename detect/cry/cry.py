@@ -43,7 +43,7 @@ while 1:
                 print("tempo de detecção: {0}".format(formatted_date))
                 moan = 0
                 count = 0
-                time.sleep(10)
+                time.sleep(5)
                 break
 
     if(cry == 1):
