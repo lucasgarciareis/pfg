@@ -1,0 +1,46 @@
+version: '3.7'
+networks:
+    net3:
+        name: net3
+
+services:
+
+    apnea:
+        container_name: apnea
+        build:
+            context: ./apnea
+        restart: unless-stopped
+        networks:
+            - net3
+
+    bad_env:
+        container_name: bad_env
+        build:
+            context: ./bad_env
+        restart: unless-stopped
+        networks:
+            - net3
+
+    cry:
+        container_name: cry
+        build:
+        context: ./cry
+        restart: unless-stopped
+        networks:
+            - net3
+
+    still:
+        container_name: still
+        build:
+        context: ./still
+        restart: unless-stopped
+        networks:
+            - net3
+    
+    bot:
+        container_name: bot
+        build:
+        context: ./bot
+        restart: unless-stopped
+        networks:
+            - net3
