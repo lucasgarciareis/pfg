@@ -18,4 +18,10 @@ def cry_alert():
     return message
 
 
+def moan_alert():
+    message = bot.send_message(
+        chat_id, "Possível gemido detectado! - {0}".format(time.ctime(time.time())))
+    return message
+
+
 bot.polling()
