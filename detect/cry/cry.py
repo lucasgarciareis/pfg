@@ -8,7 +8,7 @@ max_threshold = 1600  # minimum value for crying detection
 min_threshold = 1200
 count = 0  # amount of instances where threshold was surpassed
 max_moan = 6  # maximum amount of  instances of threshold surpassed for moaning
-max_cry = 50
+max_cry = 40
 moan = 0  # flag for moan
 cry = 0  # flag for crying when there's noise AND movement
 
