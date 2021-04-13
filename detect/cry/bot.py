@@ -14,7 +14,7 @@ port_num = 54322
 
 def cry_alert():
     message = bot.send_message(
-        chat_id, "Choro detectado! - {0}".format(time.ctime(time.time())))
+        chat_id, "Choro ou gemido prolongado detectado! - {0}".format(time.ctime(time.time())))
     return message
 
 
