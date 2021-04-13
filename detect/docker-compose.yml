@@ -45,7 +45,5 @@ services:
         networks:
             - net3
         depends_on:
-            - apnea
             - cry
-            - bad_env
             - still
