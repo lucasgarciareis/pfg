@@ -14,7 +14,7 @@ port_num = 54322
 
 def still_alert():
     message = bot.send_message(
-        chat_id, "Sem movimentos detectados nos últimos 5 minutos. Verifique o bebê. - {0}".format(time.ctime(time.time())))
+        chat_id, "Sem movimentos detectados nos últimos 10 minutos. Verifique o bebê. - {0}".format(time.ctime(time.time())))
     return message
 
 

@@ -26,9 +26,9 @@ while 1:
             count_agi = 0
             agitated = 0
 
-    if(count == 15000):
+    if(count == 30000):
         still = 1
-        print("sem movimentos detectados em 5 minutos")
+        print("sem movimentos detectados em 10 minutos")
         msg = still_alert()
         formatted_date = datetime.datetime.fromtimestamp(
             msg.date-10800).strftime('%c')
