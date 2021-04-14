@@ -77,10 +77,25 @@ while 1:
                     moan = 0
                     count = 0
                     scream = 0
-                    scream_count += 1
+                    scream_count = 1
                     time_window_start = time.time()  # inicia a contagem dos 10 segundos
                     break
-                elif(scream_count > 2):
+                elif(scream_count == 1):
+                    time_window = time.time() - time_window_start
+                    if(time_window < 11):
+                        scream_count += 1
+                    else:
+                        msg = scream_alert()
+                        formatted_date = datetime.datetime.fromtimestamp(
+                            msg.date-10800).strftime('%c')
+                        print("tempo de detecção: {0}".format(formatted_date))
+                        moan = 0
+                        count = 0
+                        scream = 0
+                        scream_count = 1
+                        time_window_start = time.time()  # inicia a contagem dos 10 segundos
+                        break
+                elif(scream_count >= 2):
                     time_window = time.time() - time_window_start
                     if(time_window < 11):
                         msg = high_cry_alert()
@@ -101,7 +116,7 @@ while 1:
                         moan = 0
                         count = 0
                         scream = 0
-                        scream_count += 1
+                        scream_count = 1
                         time_window_start = time.time()  # inicia a contagem dos 10 segundos
                         break
 
