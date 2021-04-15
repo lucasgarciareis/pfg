@@ -142,6 +142,5 @@ while 1:
                 count = 0
                 time.sleep(20)
                 break
-    count = 0
     #print("--- %s seconds ---" % (time.time() - start_time))
     time.sleep(2)
