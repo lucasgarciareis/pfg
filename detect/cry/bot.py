@@ -24,16 +24,4 @@ def moan_alert():
     return message
 
 
-def scream_alert():
-    message = bot.send_message(
-        chat_id, "Possível grito detectado! - {0}".format(time.ctime(time.time())))
-    return message
-
-
-def high_cry_alert():
-    message = bot.send_message(
-        chat_id, "Choro alto detectado! - {0}".format(time.ctime(time.time())))
-    return message
-
-
 bot.polling()
