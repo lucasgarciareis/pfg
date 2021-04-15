@@ -70,6 +70,7 @@ while 1:
                 print("tempo de detecção: {0}".format(formatted_date))
                 count = 0
                 scream = 0
+                scream_count = 0
                 time.sleep(5)
                 break
 
@@ -88,6 +89,7 @@ while 1:
                 print("tempo de detecção: {0}".format(formatted_date))
                 cry = 0
                 count = 0
+                scream_count = 0
                 time.sleep(20)
                 break
     #print("--- %s seconds ---" % (time.time() - start_time))
