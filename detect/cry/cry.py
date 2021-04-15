@@ -17,7 +17,7 @@ time_window = 0
 count = 0  # amount of instances where threshold was surpassed
 cry_count = 0
 max_moan = 6  # maximum amount of  instances of threshold surpassed for moaning
-max_cry = 40
+max_cry = 30
 moan = 0  # flag for moan
 cry = 0  # flag for crying when there's noise AND movement
 
