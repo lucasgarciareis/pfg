@@ -11,7 +11,7 @@ scream_min_threshold = 800
 scream_count = 0
 screams = 0
 scream = 0
-max_scream = 6
+max_scream = 3
 time_window_start = 0
 time_window = 0
 count = 0  # amount of instances where threshold was surpassed
@@ -74,7 +74,6 @@ while 1:
                     formatted_date = datetime.datetime.fromtimestamp(
                         msg.date-10800).strftime('%c')
                     print("tempo de detecção: {0}".format(formatted_date))
-                    print("scream_count: {0}".format(scream_count))
                     moan = 0
                     count = 0
                     scream = 0
@@ -90,7 +89,6 @@ while 1:
                         formatted_date = datetime.datetime.fromtimestamp(
                             msg.date-10800).strftime('%c')
                         print("tempo de detecção: {0}".format(formatted_date))
-                        print("scream_count: {0}".format(scream_count))
                         moan = 0
                         count = 0
                         scream = 0
@@ -100,12 +98,10 @@ while 1:
                 elif(scream_count >= 2):
                     time_window = time.time() - time_window_start
                     if(time_window < 11):
-                        print("Choro alto detectado!")
                         msg = high_cry_alert()
                         formatted_date = datetime.datetime.fromtimestamp(
                             msg.date-10800).strftime('%c')
                         print("tempo de detecção: {0}".format(formatted_date))
-                        print("scream_count: {0}".format(scream_count))
                         moan = 0
                         count = 0
                         scream = 0
@@ -117,7 +113,6 @@ while 1:
                         formatted_date = datetime.datetime.fromtimestamp(
                             msg.date-10800).strftime('%c')
                         print("tempo de detecção: {0}".format(formatted_date))
-                        print("scream_count: {0}".format(scream_count))
                         moan = 0
                         count = 0
                         scream = 0
