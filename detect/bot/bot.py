@@ -6,14 +6,12 @@ import requests
 
 bot = telebot.TeleBot("1727576179:AAE6t-psMqxv3uNd9_yP62JbG-qLWCykKpg")
 chat_id = -555998562
-#ip_addr = "192.168.0.17"
 ip_addr = "35.199.72.74"
 port_num = 54322
 
 
 @bot.message_handler(commands=['start', 'help'])
 def send_start_message(message):
-    #    bot.send_message(-555998562,"PFG atrasado !")
     bot.reply_to(message, "Olá, eu sou o Bot monitor de bebê.")
 
 
