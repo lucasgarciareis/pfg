@@ -13,7 +13,7 @@ high_temp = 0
 low_temp = 0
 
 # humidity
-humidity_threshold = 40
+humidity_threshold = 20
 count_humid = 0
 max_humid = 20
 low_humid = 0
