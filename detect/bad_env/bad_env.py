@@ -5,7 +5,7 @@ from bot import high_temp_alert, low_temp_alert, low_humidity_alert, high_lumino
 
 # temperature
 upper_temp_threshold = 25999
-lower_temp_threshold = 20000
+lower_temp_threshold = 16000
 count_high_temp = 0  # amount of instances where threshold was surpassed
 count_low_temp = 0
 max_temp = 20  # maximum amount of  instances of threshold surpassed
